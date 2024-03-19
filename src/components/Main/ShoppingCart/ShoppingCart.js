@@ -12,10 +12,20 @@ const ShoppingCart = () => {
   const {cart, removeFromCart, resetCart} = useContext(CartContext);
   const [total, setTotal] = useState(0);
 
+  const groubBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  }
+
   useEffect(() => {
     setTotal(cart.reduce((acc, product) => acc + product.price, 0));
-    console.log(cart);
   }, [cart]);
+
+  const productsGrouped = groubBy(cart, 'id');
 
   return (
     <Box className="mt-4 mb-4 ml-4 border-2 p-3 rounded-2xl">
@@ -26,11 +36,11 @@ const ShoppingCart = () => {
             Panier
           </Typography>
         </Box>
-        <Stack>
-          {cart.map((product, index) => (
+        <Stack spacing={2}>
+          {Object.entries(productsGrouped).map(([id, products], index) => (
             <Box key={index} className="flex flex-row items-center">
-              {`● ${product.name} - ${product.price} €`}
-              <Button onClick={() => removeFromCart(product.id)} className="rounded-2xl">
+              {`● ${products[0].name} - ${products[0].price} € - nb: ${products.length}`}
+              <Button onClick={() => removeFromCart(products[0].id)} className="rounded-2xl">
                 <DeleteIcon color="inherit" className="text-black"/>
               </Button>
             </Box>

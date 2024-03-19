@@ -14,7 +14,7 @@ const AvailableProducts = () => {
   return (
     <Grid container spacing={2} className="px-4 pb-4">
       {products.map((product) => (
-        <Grid item xs={6} sm={4} lg={2} key={product.id}>
+        <Grid item xs={12} sm={6} lg={3} key={product.id}>
           <Card className="rounded-2xl">
             <CardMedia
               sx={{height: 140}}

@@ -10,10 +10,10 @@ const Main = () => (
   <CartProvider>
     <main>
       <Grid container spacing={2} className="px-4 pb-4">
-        <Grid item xs={4} sm={3} lg={2}>
+        <Grid item xs={6} sm={4} lg={3}>
           <ShoppingCart/>
         </Grid>
-        <Grid item xs={8} sm={9} lg={10}>
+        <Grid item xs={6} sm={8} lg={9}>
           <AvailableProducts/>
         </Grid>
       </Grid>
