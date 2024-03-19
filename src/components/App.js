@@ -1,12 +1,15 @@
-import Banner from "./Banner";
+import Banner from "./Banner/Banner";
+import Footer from "./Footer/Footer";
+import Main from "./Main/Main";
+import {Box} from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Banner/>
-      </header>
-    </div>
+    <Box>
+      <Banner/>
+      <Main/>
+      <Footer/>
+    </Box>
   );
 }
 
