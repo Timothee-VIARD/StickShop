@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Box, Button, Stack, Typography} from "@mui/material";
 
-import {CartContext} from "../../context/CartContext";
+import {CartContext} from "../../../context/CartContext";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -22,7 +22,9 @@ const ShoppingCart = () => {
   }
 
   useEffect(() => {
-    setTotal(cart.reduce((acc, product) => acc + product.price, 0));
+    let newTotal = cart.reduce((acc, product) => acc + product.price, 0);
+    setTotal(newTotal);
+    document.title = `Panier - ${newTotal} €`;
   }, [cart]);
 
   const productsGrouped = groubBy(cart, 'id');
@@ -38,8 +40,15 @@ const ShoppingCart = () => {
         </Box>
         <Stack spacing={2}>
           {Object.entries(productsGrouped).map(([id, products], index) => (
-            <Box key={index} className="flex flex-row items-center">
-              {`● ${products[0].name} - ${products[0].price} € - nb: ${products.length}`}
+            <Box key={index} className="flex flex-row items-center justify-between">
+              <div>
+                <Typography variant="p" display="block">
+                  {`● ${products[0].name}`}
+                </Typography>
+                <Typography variant="p" display="block">
+                  {`${products.length} x ${products[0].price} €`}
+                </Typography>
+              </div>
               <Button onClick={() => removeFromCart(products[0].id)} className="rounded-2xl">
                 <DeleteIcon color="inherit" className="text-black"/>
               </Button>

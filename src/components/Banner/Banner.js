@@ -1,4 +1,4 @@
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/LogoSitckLand.png';
 import './Banner.css';
 import {Typography} from "@mui/material";
 

@@ -1,5 +1,5 @@
-import AvailableProducts from "../AvailableProducts/AvailableProducts";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import AvailableProducts from "./AvailableProducts/AvailableProducts";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import {Grid} from "@mui/material";
 import { CartProvider } from '../../context/CartContext';
 
