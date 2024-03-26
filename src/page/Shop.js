@@ -3,14 +3,14 @@ import Footer from "../components/Footer/Footer";
 import Main from "../components/Main/Main";
 import {Box} from "@mui/material";
 
-function Home() {
+function Shop() {
   return (
     <Box>
       <Banner/>
-      {/*todo: Faire la page d'accueil*/}
+      <Main/>
       <Footer/>
     </Box>
   );
 }
 
-export default Home;
+export default Shop;
