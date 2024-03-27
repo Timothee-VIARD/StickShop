@@ -2,7 +2,7 @@ import Banner from "../components/Banner/Banner";
 import Footer from "../components/Footer/Footer";
 import {Box} from "@mui/material";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <Box>
       <Banner/>

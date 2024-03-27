@@ -3,7 +3,7 @@ import Footer from "../components/Footer/Footer";
 import Shop from "../components/Shop/Shop";
 import {Box} from "@mui/material";
 
-function ShopPage() {
+const ShopPage = () => {
   return (
     <Box>
       <Banner/>
