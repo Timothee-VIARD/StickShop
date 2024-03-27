@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './translations/i18n';
 import HomePage from './page/HomePage';
-import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ShopPage from "./page/ShopPage";
 import PageNotFound from "./page/PageNotFound";
 

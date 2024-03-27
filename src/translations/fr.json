@@ -1,0 +1,7 @@
+{
+  "pageNotFound": {
+    "title": "404 - Page Non Trouvée",
+    "message": "La page que vous recherchez n'existe pas.",
+    "return": "Retourner en lieu sûr"
+  }
+}
