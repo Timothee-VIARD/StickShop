@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './page/Home';
+import HomePage from './page/HomePage';
 import {Route, BrowserRouter as Router} from "react-router-dom";
-import Shop from "./page/Shop";
+import ShopPage from "./page/ShopPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/shop" component={Shop}/>
+      <Route exact path="/" component={HomePage}/>
+      <Route exact path="/shop" component={ShopPage}/>
     </Router>
   </React.StrictMode>
 );

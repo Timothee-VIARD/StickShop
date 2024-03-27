@@ -58,7 +58,7 @@ const ShoppingCart = () => {
         <Typography variant="h6">
           Total : {total} €
         </Typography>
-        <Button onClick={resetCart} className="rounded-2xl">
+        <Button onClick={resetCart} color="inherit" className="rounded-2xl">
           Vider le panier
         </Button>
       </Stack>

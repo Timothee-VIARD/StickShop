@@ -6,7 +6,7 @@ import { CartProvider } from '../../context/CartContext';
 /**
  * Commponent for the main
  */
-const Main = () => (
+const Shop = () => (
   <CartProvider>
     <main>
       <Grid container spacing={2} className="px-4 pb-4">
@@ -21,4 +21,4 @@ const Main = () => (
   </CartProvider>
 );
 
-export default Main;
+export default Shop;
