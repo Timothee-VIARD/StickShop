@@ -1,7 +1,26 @@
 {
+  "global": {
+    "language": "Français"
+  },
   "pageNotFound": {
     "title": "404 - Page Non Trouvée",
     "message": "La page que vous recherchez n'existe pas.",
     "return": "Retourner en lieu sûr"
+  },
+  "shop": {
+    "shopCart": {
+      "title": "Panier",
+      "total": "Total",
+      "clear": "Vider le panier"
+    },
+    "shopItem": {
+      "addButton": "Ajouter au panier",
+      "price": "Prix",
+      "description": "Description",
+      "quantity": "Quantité",
+      "stock": "Stock",
+      "category": "Catégorie",
+      "rate": "Note"
+    }
   }
 }

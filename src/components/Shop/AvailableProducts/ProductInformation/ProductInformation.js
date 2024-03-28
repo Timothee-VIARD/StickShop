@@ -3,11 +3,13 @@ import {Box, Button, Card, CardActions, CardContent, CardMedia, Modal, Typograph
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {CartContext} from "../../../../context/CartContext";
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import {useTranslation} from "react-i18next";
 
 /**
  * Commponent to have more information for a product
  */
 const ProductInformation = ({product, isOpen, handleOpenModal}) => {
+  const {t} = useTranslation();
 
   const {addToCart} = useContext(CartContext);
 
@@ -34,26 +36,26 @@ const ProductInformation = ({product, isOpen, handleOpenModal}) => {
               {product.name}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Prix : ${product.price} €`}
+              {`${t('shop.shopItem.price')} : ${product.price} €`}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Description : ${product.description}`}
+              {`${t('shop.shopItem.description')} : ${product.description}`}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Stock : ${product.quantity}`}
+              {`${t('shop.shopItem.quantity')} : ${product.quantity}`}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Catégorie : ${product.category}`}
+              {`${t('shop.shopItem.category')} : ${product.category}`}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Note : ${product.rating}`}
+              {`${t('shop.shopItem.rate')} : ${product.rating}`}
             </Typography>
           </CardContent>
           <CardActions className="bg-amber-100 bg-opacity-50 p-10">
             <Button size="small" color="inherit" className="text-black gap-3 rounded-2xl p-5" onClick={() => addToCart(product)}>
               <ShoppingCartIcon/>
               <Typography variant="p">
-                Ajouter au panier
+                {t('shop.shopItem.addButton')}
               </Typography>
             </Button>
           </CardActions>

@@ -3,11 +3,13 @@ import {Box, Button, Card, CardActions, CardContent, CardMedia, Typography} from
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {CartContext} from "../../../../context/CartContext";
 import ProductInformation from "../ProductInformation/ProductInformation";
+import {useTranslation} from "react-i18next";
 
 /**
  * Commponent for the Menu
  */
 const Product = ({product}) => {
+  const {t} = useTranslation();
 
   const {addToCart} = useContext(CartContext);
 
@@ -33,7 +35,7 @@ const Product = ({product}) => {
               {product.name}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`Prix : ${product.price} €`}
+              {`${t('shop.shopItem.price')} : ${product.price} €`}
             </Typography>
           </CardContent>
         </Box>
@@ -41,7 +43,7 @@ const Product = ({product}) => {
           <Button size="small" color="inherit" className="text-black gap-3 rounded-2xl p-3 m-1" onClick={() => addToCart(product)}>
             <ShoppingCartIcon/>
             <Typography variant="p">
-              Ajouter au panier
+              {t('shop.shopItem.addButton')}
             </Typography>
           </Button>
         </CardActions>

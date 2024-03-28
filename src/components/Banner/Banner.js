@@ -1,17 +1,17 @@
 import logo from '../../assets/LogoSitckLand.png';
 import './Banner.css';
-import {Button, MenuItem, Select, Stack, Typography} from "@mui/material";
+import {Button, Stack, Typography} from "@mui/material";
 import {localStorageKeys} from "../../utils/constants/LocalStorageKeys";
 import i18n from "i18next";
-import {availableLanguages} from "../../translations/translationUtils";
-import React, {useState} from "react";
+import React from "react";
+import {useTranslation} from "react-i18next";
 
 
 /**
  * Commponent for the banner
  */
 const Banner = () => {
-
+  const {t} = useTranslation();
 
   const handleTranslate = (lng) => {
     if (i18n.language !== lng) {
@@ -33,7 +33,7 @@ const Banner = () => {
           color="inherit"
           onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}
         >
-          {i18n.language}
+          {t('global.language')}
         </Button>
       </Stack>
     </header>

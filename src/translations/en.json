@@ -1,7 +1,26 @@
 {
+  "global": {
+    "language": "English"
+  },
   "pageNotFound": {
     "title": "404 - Page Not Found",
     "message": "The page you are looking for does not exist.",
     "return": "Return to the home page"
+  },
+  "shop": {
+    "shopCart": {
+      "title": "Cart",
+      "total": "Total",
+      "clear": "Empty the cart"
+    },
+    "shopItem": {
+      "addButton": "Add to the cart",
+      "price": "Price",
+      "description": "Description",
+      "quantity": "Quantity",
+      "stock": "Stock",
+      "category": "Category",
+      "rate": "Rate"
+    }
   }
 }

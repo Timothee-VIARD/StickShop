@@ -4,11 +4,14 @@ import {Box, Button, Stack, Typography} from "@mui/material";
 import {CartContext} from "../../../context/CartContext";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {useTranslation} from "react-i18next";
 
 /**
  * Commponent for the shopping cart
  */
 const ShoppingCart = () => {
+  const {t} = useTranslation();
+
   const {cart, removeFromCart, resetCart} = useContext(CartContext);
   const [total, setTotal] = useState(0);
 
@@ -24,7 +27,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     let newTotal = cart.reduce((acc, product) => acc + product.price, 0);
     setTotal(newTotal);
-    document.title = `Panier - ${newTotal} €`;
+    document.title = `${t('shop.shopCart.title')} - ${newTotal} €`;
   }, [cart]);
 
   const productsGrouped = groubBy(cart, 'id');
@@ -35,7 +38,7 @@ const ShoppingCart = () => {
         <Box className="flex flex-row items-center gap-3">
           <ShoppingCartIcon fontSize="large"/>
           <Typography variant="h4">
-            Panier
+            {t('shop.shopCart.title')}
           </Typography>
         </Box>
         <Stack spacing={2}>
@@ -56,10 +59,10 @@ const ShoppingCart = () => {
           ))}
         </Stack>
         <Typography variant="h6">
-          Total : {total} €
+          {`${t('shop.shopCart.total')} : ${total} €`}
         </Typography>
         <Button onClick={resetCart} color="inherit" className="rounded-2xl">
-          Vider le panier
+          {t('shop.shopCart.clear')}
         </Button>
       </Stack>
     </Box>
