@@ -1,24 +1,25 @@
-import AvailableProducts from "./AvailableProducts/AvailableProducts";
-import ShoppingCart from "./ShoppingCart/ShoppingCart";
-import {Grid} from "@mui/material";
-import { CartProvider } from '../../context/CartContext';
+import AvailableProducts from './AvailableProducts/AvailableProducts';
+import { Grid, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Commponent for the main
  */
-const Shop = () => (
-  <CartProvider>
+const Shop = () => {
+  const { t } = useTranslation();
+
+  return (
     <main>
-      <Grid container spacing={2} className="px-4 pb-4">
-        <Grid item xs={6} sm={4} lg={3}>
-          <ShoppingCart/>
-        </Grid>
-        <Grid item xs={6} sm={8} lg={9}>
-          <AvailableProducts/>
+      <Typography variant="h2" className="pt-14 pb-2 flex-grow text-center">
+        {t('shop.title')}
+      </Typography>
+      <Grid container spacing={2} className="px-16 pb-4">
+        <Grid item xs={6} sm={12} lg={12}>
+          <AvailableProducts />
         </Grid>
       </Grid>
     </main>
-  </CartProvider>
-);
+  );
+};
 
 export default Shop;

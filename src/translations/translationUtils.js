@@ -2,4 +2,4 @@
 export const defaultLanguage = 'fr';
 
 /** Available languages */
-export const availableLanguages = {'fr':'fr', 'en':'en'};
+export const availableLanguages = { fr: 'fr', en: 'en' };

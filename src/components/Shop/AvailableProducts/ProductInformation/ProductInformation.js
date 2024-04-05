@@ -1,17 +1,17 @@
-import React, {useContext, useRef, useState} from "react";
-import {Box, Button, Card, CardActions, CardContent, CardMedia, Modal, Typography} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import {CartContext} from "../../../../context/CartContext";
+import React, { useContext, useRef, useState } from 'react';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Modal, Typography } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { CartContext } from '../../../../contexts/CartContext';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import {useTranslation} from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 /**
  * Commponent to have more information for a product
  */
-const ProductInformation = ({product, isOpen, handleOpenModal}) => {
-  const {t} = useTranslation();
+const ProductInformation = ({ product, isOpen, handleOpenModal }) => {
+  const { t } = useTranslation();
 
-  const {addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   const [isBottom, setIsBottom] = useState(false);
   const modalRef = useRef(null);
@@ -19,19 +19,14 @@ const ProductInformation = ({product, isOpen, handleOpenModal}) => {
   const handleScroll = (e) => {
     const bottom = e.target.scrollHeight - e.target.scrollTop - 40 <= e.target.clientHeight;
     setIsBottom(bottom);
-  }
+  };
 
   return (
     <Modal open={isOpen} onClose={handleOpenModal} className="flex flex-row justify-center items-center">
       <Box className="w-1/2 h-5/6 relative">
         <Card className="h-full overflow-auto rounded-2xl scrollbar-hide" onScroll={handleScroll} ref={modalRef}>
-          <CardMedia
-            sx={{height: 380}}
-            image={product.image}
-            title={product.name}
-            onClick={handleOpenModal}
-          />
-          <CardContent className="bg-amber-100 bg-opacity-50 p-10">
+          <CardMedia sx={{ height: 380 }} image={product.image} title={product.name} onClick={handleOpenModal} />
+          <CardContent className="bg-amber-100 bg-opacity-50 p-10 pb-2">
             <Typography gutterBottom variant="h3" component="div">
               {product.name}
             </Typography>
@@ -51,18 +46,21 @@ const ProductInformation = ({product, isOpen, handleOpenModal}) => {
               {`${t('shop.shopItem.rate')} : ${product.rating}`}
             </Typography>
           </CardContent>
-          <CardActions className="bg-amber-100 bg-opacity-50 p-10">
-            <Button size="small" color="inherit" className="text-black gap-3 rounded-2xl p-5" onClick={() => addToCart(product)}>
-              <ShoppingCartIcon/>
-              <Typography variant="p">
-                {t('shop.shopItem.addButton')}
-              </Typography>
+          <CardActions className="bg-amber-100 bg-opacity-50 p-10 pt-0">
+            <Button
+              size="small"
+              color="inherit"
+              className="text-black gap-3 rounded-2xl p-5"
+              onClick={() => addToCart(product)}
+            >
+              <ShoppingCartIcon />
+              <Typography variant="p">{t('shop.shopItem.addButton')}</Typography>
             </Button>
           </CardActions>
         </Card>
         {!isBottom && (
           <Box className="flex flex-col items-center bg-black bg-opacity-5">
-            <KeyboardArrowDownRoundedIcon className="absolute bottom-0 w-full rounded-b-2xl h-12" fontSize="large"/>
+            <KeyboardArrowDownRoundedIcon className="absolute bottom-0 w-full rounded-b-2xl h-12" fontSize="large" />
           </Box>
         )}
       </Box>
