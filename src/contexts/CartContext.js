@@ -1,6 +1,9 @@
 import React, { createContext, useMemo, useState } from 'react';
+import { numberRound } from '../utils/global/Numbers';
+import { useTranslation } from 'react-i18next';
 
 export const CartProvider = ({ children }) => {
+  const { t } = useTranslation();
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
@@ -20,13 +23,21 @@ export const CartProvider = ({ children }) => {
     return cart.length;
   };
 
+  const getTotalPrice = () => {
+    return numberRound(cart.reduce((acc, product) => acc + product.price, 0));
+  };
+
   const resetCart = () => {
     setCart([]);
   };
 
+  const resetDocumentTitle = () => {
+    document.title = `${t('shop.shopCart.title')} - ${getTotalPrice()} €`;
+  };
+
   const cartContext = useMemo(
-    () => ({ cart, addToCart, removeFromCart, resetCart, getTotalNumber }),
-    [cart, removeFromCart, resetCart, getTotalNumber]
+    () => ({ cart, addToCart, removeFromCart, resetCart, getTotalNumber, getTotalPrice, resetDocumentTitle }),
+    [cart, addToCart, removeFromCart, resetCart, getTotalNumber, getTotalPrice, resetDocumentTitle]
   );
 
   return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>;

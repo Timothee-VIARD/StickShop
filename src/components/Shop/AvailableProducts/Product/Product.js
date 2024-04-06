@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 const Product = ({ product }) => {
   const { t } = useTranslation();
 
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, resetDocumentTitle } = useContext(CartContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,6 +21,7 @@ const Product = ({ product }) => {
 
   const onBuy = () => {
     addToCart(product);
+    resetDocumentTitle();
   };
 
   return (

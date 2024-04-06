@@ -25,7 +25,7 @@ const Banner = () => {
   };
 
   return (
-    <header className="bg-lime-600 p-2 px-8 sticky top-0 z-40">
+    <header className="bg-lime-600 p-2 px-8 fixed top-0 z-40 w-full">
       <Stack direction="row" className="justify-between">
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleDrawerToggle}>

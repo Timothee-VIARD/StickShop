@@ -9,7 +9,9 @@ const PageNotFound = () => {
 
   return (
     <Box className="flex flex-col justify-between h-screen">
-      <Banner />
+      <Box className="pt-14">
+        <Banner />
+      </Box>
       <Stack spacing={2} className="flex flex-col items-center justify-center h-full">
         <Typography variant="h4" className="font-bold">
           {t('pageNotFound.title')}

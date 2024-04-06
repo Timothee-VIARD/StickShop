@@ -6,7 +6,9 @@ import { Box } from '@mui/material';
 const ShopPage = () => {
   return (
     <Box className="flex flex-col justify-between h-screen">
-      <Banner />
+      <Box className="pt-14">
+        <Banner />
+      </Box>
       <Shop />
       <Footer />
     </Box>

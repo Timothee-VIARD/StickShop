@@ -20,14 +20,7 @@ export const ShoppingCartDrawer = () => {
         {getTotalNumber() > 0 ? <LocalGroceryStore /> : <LocalGroceryStoreOutlinedIcon />}
         {getTotalNumber() > 0 && <Box className="absolute top-1 right-1 bg-red-700 w-2 h-2 rounded-2xl"></Box>}
       </IconButton>
-      <Drawer
-        open={shopOpen}
-        onClose={handleDrawerToggle}
-        anchor={'right'}
-        ModalProps={{
-          keepMounted: true // Better open performance on mobile.
-        }}
-      >
+      <Drawer open={shopOpen} onClose={handleDrawerToggle} anchor={'right'}>
         <ShoppingCart closeDrawer={handleDrawerToggle} />
       </Drawer>
     </>

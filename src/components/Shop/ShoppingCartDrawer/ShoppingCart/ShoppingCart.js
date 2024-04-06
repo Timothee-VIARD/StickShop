@@ -12,7 +12,8 @@ import { numberRound } from '../../../../utils/global/Numbers';
  */
 const ShoppingCart = ({ closeDrawer }) => {
   const { t } = useTranslation();
-  const { cart, removeFromCart, resetCart, addToCart, getTotalNumber } = useContext(CartContext);
+  const { cart, removeFromCart, resetCart, addToCart, getTotalNumber, getTotalPrice, resetDocumentTitle } =
+    useContext(CartContext);
   const [total, setTotal] = useState(0);
 
   const groubBy = (array, key) => {
@@ -23,9 +24,9 @@ const ShoppingCart = ({ closeDrawer }) => {
   };
 
   useEffect(() => {
-    let newTotal = cart.reduce((acc, product) => acc + product.price, 0);
-    setTotal(newTotal);
-    document.title = `${t('shop.shopCart.title')} - ${newTotal} €`;
+    let totalPrice = getTotalPrice();
+    setTotal(totalPrice);
+    resetDocumentTitle();
   }, [cart, t]);
 
   const productsGrouped = groubBy(cart, 'id');
