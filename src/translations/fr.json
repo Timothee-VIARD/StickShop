@@ -1,17 +1,24 @@
 {
   "global": {
     "title": "StickLand",
-    "language": "Français"
+    "language": "FR"
   },
   "pageNotFound": {
     "title": "404 - Page Non Trouvée",
     "message": "La page que vous recherchez n'existe pas.",
     "return": "Retourner en lieu sûr"
   },
+  "home": {
+    "title": "Accueil",
+    "welcome": "Bienvenue sur StickLand !",
+    "description": "StickLand est un site de vente en ligne de stickers de qualité. Nous proposons une large gamme de stickers pour tous les goûts. N'hésitez pas à parcourir notre boutique pour trouver le sticker qui vous correspond !"
+  },
   "shop": {
+    "title": "Boutique",
     "shopCart": {
       "title": "Panier",
-      "total": "Total",
+      "totalPrice": "Prix total",
+      "totalItems": "Nombre d'articles",
       "clear": "Vider le panier"
     },
     "shopItem": {

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Baton en bois d'olivier",
-      "price": 100,
+      "price": 5.99,
       "image": "articles/image/Firefly Baton en bois d'olivier sur fond blanc 72232.jpg",
       "description": "Baton en bois d'olivier, provenant de la contré de la Bourgogne en France. Qualité premium garantie.",
       "category": "Baton naturel",
@@ -15,7 +15,7 @@
     {
       "id": 2,
       "name": "Baton en bois de chêne",
-      "price": 120,
+      "price": 9.99,
       "image": "articles/image/Firefly Baton en bois de chêne sur fond blanc 62917.jpg",
       "description": "Baton en bois de chêne, taillé à la main dans les forêts du Limousin. Résistant et élégant.",
       "category": "Baton naturel",
@@ -27,7 +27,7 @@
     {
       "id": 3,
       "name": "Baton en bois de hêtre",
-      "price": 90,
+      "price": 10.01,
       "image": "articles/image/Firefly Baton en bois de hêtre sur fond blanc 47922.jpg",
       "description": "Baton en bois de hêtre, récolté dans les montagnes des Alpes. Léger et maniable.",
       "category": "Baton naturel",
@@ -39,7 +39,7 @@
     {
       "id": 4,
       "name": "Baton en bois de cerisier",
-      "price": 110,
+      "price": 4.59,
       "image": "articles/image/Firefly Baton en bois de cerisier sur fond blanc 2660.jpg",
       "description": "Baton en bois de cerisier, issu des vergers de Provence. Bois robuste et esthétique.",
       "category": "Baton naturel",
@@ -51,7 +51,7 @@
     {
       "id": 5,
       "name": "Baton en bois de pin",
-      "price": 80,
+      "price": 1.89,
       "image": "articles/image/Firefly Baton en bois de pin sur fond blanc 19942.jpg",
       "description": "Baton en bois de pin, provenant des forêts du Nord de la France. Parfait pour les randonnées en montagne.",
       "category": "Baton naturel",
@@ -63,7 +63,7 @@
     {
       "id": 6,
       "name": "Baton en bois de frêne",
-      "price": 95,
+      "price": 17.99,
       "image": "articles/image/Firefly Baton en bois de frêne sur fond blanc 45217.jpg",
       "description": "Baton en bois de frêne, cueilli dans les bois de Normandie. Équilibré et solide.",
       "category": "Baton naturel",
@@ -75,7 +75,7 @@
     {
       "id": 7,
       "name": "Baton en bois de sapin",
-      "price": 85,
+      "price": 0.99,
       "image": "articles/image/Firefly Baton en bois de sapin sur fond blanc 30140.jpg",
       "description": "Baton en bois de sapin, récolté dans les massifs forestiers des Vosges. Léger et résistant.",
       "category": "Baton naturel",
@@ -87,7 +87,7 @@
     {
       "id": 8,
       "name": "Baton en bois d'épicéa",
-      "price": 105,
+      "price": 21.99,
       "image": "articles/image/Firefly Baton en bois d'épicéa sur fond blanc 84607.jpg",
       "description": "Baton en bois d'épicéa, provenant des hauteurs des Alpes. Idéal pour les longues marches en forêt.",
       "category": "Baton naturel",
@@ -99,19 +99,19 @@
     {
       "id": 9,
       "name": "Baton en bois de bouleau",
-      "price": 115,
+      "price": 6.89,
       "image": "articles/image/Firefly Baton en bois de bouleau sur fond blanc 91762.jpg",
       "description": "Baton en bois de bouleau, sélectionné dans les forêts du Jura. Souple et élégant.",
       "category": "Baton naturel",
       "quantity": 11,
-      "rating": 4.5,
+      "rating": 4.50,
       "reviews": 9,
       "inStock": true
     },
     {
       "id": 10,
       "name": "Baton en bois d'if",
-      "price": 130,
+      "price": 52.99,
       "image": "articles/image/Firefly Baton en bois d'if sur fond blanc 37418.jpg",
       "description": "Baton en bois d'if, rare et précieux, issu des forêts préservées des Pyrénées. Stabilité et durabilité assurées.",
       "category": "Baton naturel",
@@ -123,7 +123,7 @@
     {
       "id": 11,
       "name": "Baton en bois de noyer",
-      "price": 125,
+      "price": 21,
       "image": "articles/image/Firefly Baton en bois de noyer sur fond blanc 36741.jpg",
       "description": "Baton en bois de noyer, récolté dans les vergers de la Vallée de la Loire. Bois noble et résistant.",
       "category": "Baton naturel",
@@ -135,7 +135,7 @@
     {
       "id": 12,
       "name": "Baton en bois d'acacia",
-      "price": 95,
+      "price": 59.99,
       "image": "articles/image/Firefly Baton en bois d'acacia sur fond blanc 88499.jpg",
       "description": "Baton en bois d'acacia, provenant des vastes plantations de la région du Midi. Durable et esthétique.",
       "category": "Baton naturel",
@@ -147,7 +147,7 @@
     {
       "id": 13,
       "name": "Baton en bois de peuplier",
-      "price": 85,
+      "price": 69.69,
       "image": "articles/image/Firefly Baton en bois de peuplier sur fond blanc 79060.jpg",
       "description": "Baton en bois de peuplier, cultivé dans les plaines fertiles de la Beauce. Léger et facile à manier.",
       "category": "Baton naturel",
@@ -159,7 +159,7 @@
     {
       "id": 14,
       "name": "Baton en bois de mélèze",
-      "price": 110,
+      "price": 42.50,
       "image": "articles/image/Firefly Baton en bois de mélèze sur fond blanc 61233.jpg",
       "description": "Baton en bois de mélèze, provenant des forêts d'altitude des Pyrénées. Résistant aux intempéries.",
       "category": "Baton naturel",
@@ -171,7 +171,7 @@
     {
       "id": 15,
       "name": "Baton en bois de saule",
-      "price": 90,
+      "price": 99.99,
       "image": "articles/image/Firefly Baton en bois de saule sur fond blanc 89251.jpg",
       "description": "Baton en bois de saule, taillé dans les zones humides de la Camargue. Flexibilité et légèreté.",
       "category": "Baton naturel",

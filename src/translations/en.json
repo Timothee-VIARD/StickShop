@@ -1,17 +1,24 @@
 {
   "global": {
     "title": "StickLand",
-    "language": "English"
+    "language": "EN"
   },
   "pageNotFound": {
     "title": "404 - Page Not Found",
     "message": "The page you are looking for does not exist.",
     "return": "Return to the home page"
   },
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to StickLand !",
+    "description": "StickLand is a fictional world where you can find all kinds of stick figures. You can buy them, sell them, or even create your own. StickLand is a place where you can let your imagination run wild."
+  },
   "shop": {
+    "title": "Shop",
     "shopCart": {
       "title": "Cart",
-      "total": "Total",
+      "totalPrice": "Total price",
+      "totalItems": "Total items",
       "clear": "Empty the cart"
     },
     "shopItem": {
@@ -23,5 +30,6 @@
       "category": "Category",
       "rate": "Rate"
     }
-  }
+  },
+  "welcome": "Bienvenue sur notre site"
 }
