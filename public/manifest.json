@@ -1,19 +1,19 @@
 {
-  "short_name": "StickLand",
-  "name": "The StickLand",
+  "short_name": "StickShop",
+  "name": "The StickShop",
   "icons": [
     {
-      "src": "LogoStickLand.png",
+      "src": "LogoStickShop.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "LogoStickLand.png",
+      "src": "LogoStickShop.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "LogoStickLand.png",
+      "src": "LogoStickShop.png",
       "type": "image/png",
       "sizes": "512x512"
     }

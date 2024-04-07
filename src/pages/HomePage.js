@@ -1,9 +1,11 @@
 import Banner from '../components/Banner/Banner';
 import Footer from '../components/Footer/Footer';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useContext, useEffect } from 'react';
 import { CartContext } from '../contexts/CartContext';
+import { Home } from '../components/Home/Home';
+import '../style/global.css';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -18,14 +20,11 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Box className="flex flex-col justify-between h-screen">
+    <Box className="backgroundColor flex flex-col justify-between h-full">
       <Box className="pt-14">
         <Banner />
       </Box>
-      <Box className="flex flex-col items-center justify-center h-full">
-        <Typography variant="h1">{t('home.welcome')}</Typography>
-        <Typography variant="h5">{t('home.description')}</Typography>
-      </Box>
+      <Home />
       <Footer />
     </Box>
   );

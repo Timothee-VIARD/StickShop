@@ -34,7 +34,7 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
       >
         <Stack onClick={handleDrawerToggle} spacing={4} className="backgroundColor w-[300px] p-4 items-center h-full">
           <Stack direction="row" spacing={2}>
-            <img src="/LogoSitckLand.png" alt="Logo" className="w-8 h-8 rotate-logo" />
+            <img src="/LogoStickShop.png" alt="Logo" className="w-8 h-8 rotate-logo" />
             <Typography fontWeight="bold" variant="h6">
               {t('global.title')}
             </Typography>

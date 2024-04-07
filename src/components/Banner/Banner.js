@@ -32,9 +32,9 @@ const Banner = () => {
           <IconButton onClick={handleDrawerToggle}>
             <MenuIcon />
           </IconButton>
-          <img src="/LogoSitckLand.png" alt="Logo" className="h-8 rotate-logo" />
+          <img src="/LogoStickShop.png" alt="Logo" className="h-8 rotate-logo" />
           <Typography fontWeight="bold" variant="h6" className="flex items-center">
-            StickLand
+            {t('global.title')}
           </Typography>
         </Stack>
         <Stack direction="row">

@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "StickLand",
+    "title": "StickShop",
     "language": "FR"
   },
   "pageNotFound": {
@@ -10,8 +10,8 @@
   },
   "home": {
     "title": "Accueil",
-    "welcome": "Bienvenue sur StickLand !",
-    "description": "StickLand est un site de vente en ligne de stickers de qualité. Nous proposons une large gamme de stickers pour tous les goûts. N'hésitez pas à parcourir notre boutique pour trouver le sticker qui vous correspond !"
+    "welcome": "Bienvenue sur StickShop !",
+    "description": "StickShop est un site de vente en ligne de bâtons. Nous proposons une large gamme de bâtons pour tous les goûts. N'hésitez pas à parcourir notre boutique pour trouver le bâton qui vous correspond !"
   },
   "shop": {
     "title": "Boutique",
