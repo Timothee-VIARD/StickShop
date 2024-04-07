@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import '../Banner.css';
+import '../../../style/global.css';
 
 export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
           keepMounted: true // Better open performance on mobile.
         }}
       >
-        <Stack onClick={handleDrawerToggle} spacing={4} className="w-[300px] p-4 items-center">
+        <Stack onClick={handleDrawerToggle} spacing={4} className="backgroundColor w-[300px] p-4 items-center h-full">
           <Stack direction="row" spacing={2}>
             <img src="/LogoSitckLand.png" alt="Logo" className="w-8 h-8 rotate-logo" />
             <Typography fontWeight="bold" variant="h6">

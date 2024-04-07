@@ -3,12 +3,13 @@ import Banner from '../components/Banner/Banner';
 import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import '../style/global.css';
 
 const PageNotFound = () => {
   const { t } = useTranslation();
 
   return (
-    <Box className="flex flex-col justify-between h-screen">
+    <Box className="backgroundColor flex flex-col justify-between h-screen">
       <Box className="pt-14">
         <Banner />
       </Box>
