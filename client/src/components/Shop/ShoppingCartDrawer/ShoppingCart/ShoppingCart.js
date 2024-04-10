@@ -41,7 +41,7 @@ const ShoppingCart = ({ closeDrawer }) => {
   };
 
   return (
-    <Box className="backgroundColor p-7 z-30 w-96 max-w-96 overflow-auto h-full">
+    <Box className="backgroundColor p-7 z-30 w-[430px] max-w-[430px] overflow-auto h-full">
       <Stack spacing={4}>
         <Stack direction="row" className="items-center justify-between">
           <Stack direction="row" className="items-center gap-3">

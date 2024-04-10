@@ -9,6 +9,7 @@ import PageNotFound from './pages/PageNotFound';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './style/theme';
 import { CartProvider } from './contexts/CartContext';
+import { ContactPage } from './pages/ContactPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/shop" component={ShopPage} />
+            <Route exact path="/contact" component={ContactPage} />
             <Route component={PageNotFound} />
           </Switch>
         </Router>
