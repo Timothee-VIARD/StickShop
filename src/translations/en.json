@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "StickLand",
+    "title": "StickShop",
     "language": "EN"
   },
   "pageNotFound": {
@@ -10,8 +10,8 @@
   },
   "home": {
     "title": "Home",
-    "welcome": "Welcome to StickLand !",
-    "description": "StickLand is a fictional world where you can find all kinds of stick figures. You can buy them, sell them, or even create your own. StickLand is a place where you can let your imagination run wild."
+    "welcome": "Welcome to StickShop !",
+    "description": "StickShop is an online retailer of sticks. We offer a wide range of sticks to suit all tastes. Feel free to browse our shop to find the stick that's right for you !"
   },
   "shop": {
     "title": "Shop",
@@ -30,6 +30,5 @@
       "category": "Category",
       "rate": "Rate"
     }
-  },
-  "welcome": "Bienvenue sur notre site"
+  }
 }

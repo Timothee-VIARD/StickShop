@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Add, Close, Remove, ShoppingCartOutlined } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import { numberRound } from '../../../../utils/global/Numbers';
+import '../../../../style/global.css';
 
 /**
  * Commponent for the shopping cart
@@ -40,7 +41,7 @@ const ShoppingCart = ({ closeDrawer }) => {
   };
 
   return (
-    <Box className="m-4 p-3 z-30 w-96 max-w-96 overflow-auto">
+    <Box className="backgroundColor p-7 z-30 w-96 max-w-96 overflow-auto h-full">
       <Stack spacing={4}>
         <Stack direction="row" className="items-center justify-between">
           <Stack direction="row" className="items-center gap-3">
