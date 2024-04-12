@@ -10,13 +10,15 @@ const AvailableProducts = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch('/articles/products.json');
-      const data = await response.json();
-      setProducts(data.products);
-      setChecked(true);
-    };
-    fetchProducts();
+    fetch(`http://localhost:3001`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        setChecked(true);
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la récupération des produits:', error);
+      });
   }, []);
 
   return (
