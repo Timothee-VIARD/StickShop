@@ -5,12 +5,9 @@ const mysql = require('mysql2');
 app.use(cors());
 
 const connection = mysql.createConnection({
-  host: 'localhost'
-  ,
-  user: 'root'
-  ,
-  password: 'root'
-  ,
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
   database: 'stickShop',
 });
 connection.connect(err => {
