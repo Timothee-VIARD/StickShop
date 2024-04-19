@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../style/global.css';
 
-const PageNotFound = () => {
+export const PageNotFound = () => {
   const { t } = useTranslation();
 
   return (
@@ -26,5 +26,3 @@ const PageNotFound = () => {
     </Box>
   );
 };
-
-export default PageNotFound;

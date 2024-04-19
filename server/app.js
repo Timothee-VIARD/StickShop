@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors'); // Importez le module cors
 const app = express();
 const mysql = require('mysql2');
+const multer = require('multer');
 app.use(cors());
 
 const connection = mysql.createConnection({
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/:id', (req, res) => {
+app.get('/products/:id', (req, res) => {
   const sticksId = req.params.id;
   connection.query('SELECT * FROM products WHERE id = ?', [sticksId], (error, results) => {
     if (error) {
@@ -43,6 +44,56 @@ app.get('/:id', (req, res) => {
       }
     }
   });
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    const uploadDir = './images';
+    callback(null, uploadDir);
+  },
+  filename: (req, file, callback) => {
+    const fileName = `${file.originalname}`;
+    callback(null, fileName);
+  }
+});
+const upload = multer({ storage: storage });
+
+app.use('/images', express.static('images'));
+app.use(express.json());
+
+app.post('/upload', upload.single('image'), async (req, res) => {
+  try {
+    let imageUrl;
+    if (req.file) {
+      imageUrl = `http://localhost:3001/images/${req.file.filename}`;
+    }
+
+    const productId = req.body.productId;
+    const { name, price, description, category, quantity, inStock } = req.body;
+
+    let updateProductQuery;
+    let queryValues;
+
+    if (imageUrl) {
+      updateProductQuery = 'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ?, image = ? WHERE id = ?';
+      queryValues = [name, price, description, category, quantity, inStock, imageUrl, productId];
+    } else {
+      updateProductQuery = 'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ? WHERE id = ?';
+      queryValues = [name, price, description, category, quantity, inStock, productId];
+    }
+
+    connection.query(updateProductQuery, queryValues, (error, results) => {
+      if (error) {
+        console.error('Erreur lors de la mise à jour du produit dans MySQL :', error);
+        res.status(500).json({ error: 'Erreur serveur lors de la mise à jour du produit.' });
+      } else {
+        res.status(200).json({ imageUrl: imageUrl });
+      }
+    });
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour du produit dans MySQL :', error);
+    res.status(500).json({ error: 'Erreur serveur lors de la mise à jour du produit.' });
+  }
 });
 
 module.exports = app;
