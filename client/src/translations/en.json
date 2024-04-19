@@ -1,7 +1,9 @@
 {
   "global": {
     "title": "StickShop",
-    "language": "EN"
+    "language": "EN",
+    "true": "Yes",
+    "false": "No"
   },
   "pageNotFound": {
     "title": "404 - Page Not Found",
@@ -29,6 +31,31 @@
       "stock": "Stock",
       "category": "Category",
       "rate": "Rate"
+    }
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "admin": {
+    "title": "Store management",
+    "id": "ID",
+    "name": "Name",
+    "price": "Price",
+    "description": "Description",
+    "quantity": "Quantity",
+    "inStock": "Is in stock",
+    "actions": "Actions",
+    "productEdit": {
+      "title": "Product",
+      "edit": "Edit",
+      "name": "Name",
+      "price": "Proce",
+      "description": "Description",
+      "quantity": "Quantity",
+      "inStock": "Is in stock",
+      "category": "Category",
+      "save": "Save",
+      "required": "Required"
     }
   }
 }

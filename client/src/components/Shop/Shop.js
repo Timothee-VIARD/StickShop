@@ -10,7 +10,7 @@ const Shop = () => {
 
   return (
     <main>
-      <Typography variant="h2" className="pt-14 pb-2 flex-grow text-center">
+      <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
         {t('shop.title')}
       </Typography>
       <Grid container spacing={2} className="px-16 pb-4">

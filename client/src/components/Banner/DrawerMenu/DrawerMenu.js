@@ -18,8 +18,12 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
       link: '/shop'
     },
     {
-      title: 'Contact',
+      title: t('contact.title'),
       link: '/contact'
+    },
+    {
+      title: t('admin.title'),
+      link: '/admin'
     }
   ];
 
