@@ -10,7 +10,7 @@ const AvailableProducts = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3001`)
+    fetch(`http://localhost:3001/products/`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

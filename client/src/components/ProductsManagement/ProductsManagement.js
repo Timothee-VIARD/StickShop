@@ -44,7 +44,7 @@ export const ProductsManagement = () => {
   ];
 
   useEffect(() => {
-    fetch(`http://localhost:3001`)
+    fetch(`http://localhost:3001/admin/`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
