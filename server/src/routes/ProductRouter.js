@@ -1,5 +1,5 @@
-import express from "express";
-import ProductService from "../services/ProductService.js";
+import express from 'express';
+import ProductService from '../services/ProductService.js';
 
 const router = express.Router();
 router.get('/', async (req, res) => {
