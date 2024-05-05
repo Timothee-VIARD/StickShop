@@ -1,4 +1,5 @@
 import mysql from 'mysql2';
+import { logError, logSuccess } from '../errors/DisplayError.js';
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -8,9 +9,9 @@ const connection = mysql.createConnection({
 });
 connection.connect((err) => {
   if (err) {
-    console.error('Erreur de connexion à MySQL :', err);
+    logError('Erreur de connexion à MySQL :', err);
   } else {
-    console.log('Connexion à MySQL réussie !');
+    logSuccess('Connexion à MySQL réussie !');
   }
 });
 

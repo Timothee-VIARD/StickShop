@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
 import connection from './DBService.js';
+import jwt from 'jsonwebtoken';
+import CustomError from '../errors/CustomError.js';
+import { ERROR_CODES } from '../constants/errorCodes.js';
 
 class AuthService {
   static async signUp(body) {
@@ -24,7 +27,7 @@ class AuthService {
           }
         });
       } else {
-        reject(new Error('Email, password and username are required'));
+        reject(new CustomError('Email, password and username are required', ERROR_CODES.INVALID_DATA));
       }
     });
   }
@@ -42,17 +45,20 @@ class AuthService {
               if (error) {
                 reject(error);
               } else if (same) {
-                resolve(user);
+                const token = jwt.sign({ id: user.id }, 'token', {
+                  expiresIn: '24h'
+                });
+                resolve({ ...user, token: token });
               } else {
-                reject(new Error('Invalid information'));
+                reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
               }
             });
           } else {
-            reject(new Error('Invalid information'));
+            reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
           }
         });
       } else {
-        reject(new Error('Email and password are required'));
+        reject(new CustomError('Email and password are required', ERROR_CODES.INVALID_DATA));
       }
     });
   }
