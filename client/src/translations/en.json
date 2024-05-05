@@ -5,6 +5,29 @@
     "true": "Yes",
     "false": "No"
   },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "login": "Login",
+      "noAccount": "Don't have an account ?",
+      "error": "Invalid email or password"
+    },
+    "logout": {
+      "title": "Logout",
+      "logout": "Logout"
+    },
+    "register": {
+      "title": "Register",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "register": "Register",
+      "haveAccount": "Already have an account ?",
+      "error": "An error occurred while registering"
+    }
+  },
   "pageNotFound": {
     "title": "404 - Page Not Found",
     "message": "The page you are looking for does not exist.",

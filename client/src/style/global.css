@@ -3,9 +3,17 @@
 }
 
 .backgroundColor {
-    background-color: #fff9eb;
+    background-color: #fff9eb !important;
+}
+
+.cardBackgroundColor {
+    background-color: #fef6d9 !important;
 }
 
 .textColorWhite {
     color: #fff9eb;
+}
+
+body {
+    background-color: #fff9eb;
 }

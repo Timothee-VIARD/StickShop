@@ -12,6 +12,7 @@ import { CartProvider } from './contexts/CartContext';
 import { ContactPage } from './pages/ContactPage';
 import { ProductsManagementPage } from './pages/ProductsManagementPage';
 import { ProductEditPage } from './pages/ProductEditPage';
+import { AuthPage } from './pages/AuthPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Router>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/auth" component={AuthPage} />
             <Route exact path="/shop" component={ShopPage} />
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/admin" component={ProductsManagementPage} />

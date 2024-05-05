@@ -27,7 +27,7 @@ const AvailableProducts = () => {
         products.map((product, index) => (
           <Grid item xs={12} sm={6} lg={3} key={product.id}>
             <Grow in={checked} timeout={index * 100}>
-              <Box>
+              <Box className="h-full">
                 <Product product={product} />
               </Box>
             </Grow>

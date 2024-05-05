@@ -9,7 +9,7 @@ export const PageNotFound = () => {
   const { t } = useTranslation();
 
   return (
-    <Box className="backgroundColor flex flex-col justify-between h-screen">
+    <Box className="flex flex-col justify-between h-screen">
       <Box className="pt-14">
         <Banner />
       </Box>

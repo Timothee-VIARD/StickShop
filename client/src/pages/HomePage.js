@@ -20,7 +20,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Box className="backgroundColor flex flex-col justify-between h-full">
+    <Box className="flex flex-col justify-between h-full">
       <Box className="pt-14">
         <Banner />
       </Box>

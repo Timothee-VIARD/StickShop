@@ -5,7 +5,7 @@ import { Contact } from '../components/Contact/Contact';
 
 export const ContactPage = () => {
   return (
-    <Box className="backgroundColor flex flex-col justify-between h-full">
+    <Box className="flex flex-col justify-between h-full">
       <Box className="pt-14">
         <Banner />
       </Box>
