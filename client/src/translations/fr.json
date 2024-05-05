@@ -3,7 +3,32 @@
     "title": "StickShop",
     "language": "FR",
     "true": "Oui",
-    "false": "Non"
+    "false": "Non",
+    "settings": "Paramètres"
+  },
+  "auth": {
+    "title": "Compte",
+    "login": {
+      "title": "Se connecter",
+      "email": "Email",
+      "password": "Mot de passe",
+      "login": "Se connecter",
+      "noAccount": "Pas encore inscrit ?",
+      "error": "Mot de passe ou email incorrect"
+    },
+    "logout": {
+      "title": "Déconnexion",
+      "logout": "Se déconnecter"
+    },
+    "register": {
+      "title": "Inscription",
+      "username" : "Nom d'utilisateur",
+      "email": "Email",
+      "password": "Mot de passe",
+      "register": "S'inscrire",
+      "haveAccount": "Déjà inscrit ?",
+      "error": "Erreur d'inscription"
+    }
   },
   "pageNotFound": {
     "title": "404 - Page Non Trouvée",
@@ -57,5 +82,10 @@
       "save": "Sauvegarder",
       "required": "Champ obligatoire"
     }
+  },
+  "error": {
+    "INVALID_DATA": "Données incorrectes",
+    "INVALID_CREDENTIALS": "Identifiants incorrects",
+    "ER_DUP_ENTRY": "Utilisateur déjà existant"
   }
 }

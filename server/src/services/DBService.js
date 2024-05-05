@@ -1,16 +1,17 @@
-import mysql from "mysql2";
+import mysql from 'mysql2';
+import { logError, logSuccess } from '../errors/DisplayError.js';
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'stickShop',
+  database: 'stickShop'
 });
-connection.connect(err => {
+connection.connect((err) => {
   if (err) {
-    console.error('Erreur de connexion à MySQL :', err);
+    logError('Erreur de connexion à MySQL :', err);
   } else {
-    console.log('Connexion à MySQL réussie !');
+    logSuccess('Connexion à MySQL réussie !');
   }
 });
 

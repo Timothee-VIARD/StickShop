@@ -9,10 +9,12 @@ import { DrawerMenu } from './DrawerMenu/DrawerMenu';
 import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawer'; // Importez correctement le contexte
 import './Banner.css';
 import '../../style/global.css';
+import { AuthMenu } from './AuthMenu/AuthMenu';
 
 const Banner = () => {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const bannerRef = React.useRef(null);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
@@ -26,7 +28,7 @@ const Banner = () => {
   };
 
   return (
-    <header className="mainColor p-2 px-8 fixed top-0 z-40 w-full">
+    <header ref={bannerRef} className="mainColor p-2 px-8 fixed top-0 z-10 w-full">
       <Stack direction="row" className="justify-between">
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleDrawerToggle}>
@@ -42,6 +44,7 @@ const Banner = () => {
           <Button color="inherit" onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}>
             {t('global.language')}
           </Button>
+          <AuthMenu bannerRef={bannerRef} />
         </Stack>
       </Stack>
       <DrawerMenu menuOpen={menuOpen} handleDrawerToggle={handleDrawerToggle} />

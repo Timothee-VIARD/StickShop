@@ -1,5 +1,5 @@
 import connection from './DBService.js';
-import multer from "multer";
+import multer from 'multer';
 
 class AdminService {
   static async getAllProducts() {
@@ -33,13 +33,17 @@ class AdminService {
 
   static async addProduct(product) {
     return new Promise((resolve, reject) => {
-      connection.query('INSERT INTO products (name, price, image) VALUES (?, ?, ?)', [product.name, product.price, product.image], (err, results) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
+      connection.query(
+        'INSERT INTO products (name, price, image) VALUES (?, ?, ?)',
+        [product.name, product.price, product.image],
+        (err, results) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(results);
+          }
         }
-      });
+      );
     });
   }
 
@@ -77,11 +81,30 @@ class AdminService {
       let queryValues;
 
       if (imageUrl) {
-        updateProductQuery = 'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ?, image = ? WHERE id = ?';
-        queryValues = [product.name, product.price, product.description, product.category, product.quantity, product.inStock, imageUrl, product.id];
+        updateProductQuery =
+          'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ?, image = ? WHERE id = ?';
+        queryValues = [
+          product.name,
+          product.price,
+          product.description,
+          product.category,
+          product.quantity,
+          product.inStock,
+          imageUrl,
+          product.id
+        ];
       } else {
-        updateProductQuery = 'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ? WHERE id = ?';
-        queryValues = [product.name, product.price, product.description, product.category, product.quantity, product.inStock, product.id];
+        updateProductQuery =
+          'UPDATE products SET name = ?, price = ?, description = ?, category = ?, quantity = ?, inStock = ? WHERE id = ?';
+        queryValues = [
+          product.name,
+          product.price,
+          product.description,
+          product.category,
+          product.quantity,
+          product.inStock,
+          product.id
+        ];
       }
 
       connection.query(updateProductQuery, queryValues, (error, results) => {
@@ -89,7 +112,7 @@ class AdminService {
           console.error('Erreur lors de la mise à jour du produit dans MySQL :', error);
           reject(error);
         } else {
-          resolve({imageUrl: imageUrl});
+          resolve({ imageUrl: imageUrl });
         }
       });
     });
@@ -106,7 +129,7 @@ class AdminService {
         callback(null, fileName);
       }
     });
-    return multer({storage: storage});
+    return multer({ storage: storage });
   }
 }
 

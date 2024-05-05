@@ -1,10 +1,11 @@
 import http from 'http';
-import express from "express";
-import router from "./routes/router.js";
+import express, * as bodyParser from 'express';
+import router from './routes/router.js';
 import cors from 'cors';
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use(router);
 app.use('/images', express.static('images'));

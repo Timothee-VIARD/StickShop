@@ -26,7 +26,7 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <Card className="rounded-2xl h-full bg-amber-100 bg-opacity-50 flex flex-col justify-between">
+      <Card className="cardBackgroundColor rounded-2xl h-full bg-opacity-50 flex flex-col justify-between">
         <Box>
           <CardMedia
             sx={{ height: 140 }}
