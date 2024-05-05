@@ -9,7 +9,7 @@ import { DrawerMenu } from './DrawerMenu/DrawerMenu';
 import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawer'; // Importez correctement le contexte
 import './Banner.css';
 import '../../style/global.css';
-import { AuthPopper } from './AuthMenu/AuthPopper';
+import { AuthMenu } from './AuthMenu/AuthMenu';
 
 const Banner = () => {
   const { t } = useTranslation();
@@ -44,7 +44,7 @@ const Banner = () => {
           <Button color="inherit" onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}>
             {t('global.language')}
           </Button>
-          <AuthPopper bannerRef={bannerRef} />
+          <AuthMenu bannerRef={bannerRef} />
         </Stack>
       </Stack>
       <DrawerMenu menuOpen={menuOpen} handleDrawerToggle={handleDrawerToggle} />

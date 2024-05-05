@@ -1,10 +1,22 @@
 import { Button, Divider, Stack, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
+import IconButton from '@mui/material/IconButton';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 export const Login = ({ switchAuth }) => {
   const { t } = useTranslation();
-  const [userInformation, setUserInformation] = useState({ email: '', password: '' });
+  const [userInformation, setUserInformation] = useState({});
+  const [isError, setIsError] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      window.location.href = '/';
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -15,6 +27,10 @@ export const Login = ({ switchAuth }) => {
       ...userInformation,
       [name]: isValid ? value : ''
     });
+
+    if (isError) {
+      setIsError(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -30,13 +46,30 @@ export const Login = ({ switchAuth }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Erreur de connexion');
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      } else {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        const user = {
+          id: data.userId,
+          username: data.username,
+          role: data.role
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.href = '/';
       }
-
-      const responseData = await response.json();
-      console.log(responseData);
     } catch (error) {
-      console.error('Erreur de connexion', error);
+      const errorMessage = t(`error.${error.message}`);
+      setIsError(true);
+      enqueueSnackbar(errorMessage, {
+        variant: 'error',
+        action: (key) => (
+          <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+            <CloseRoundedIcon fontSize="small" />
+          </IconButton>
+        )
+      });
     }
   };
 
@@ -52,13 +85,16 @@ export const Login = ({ switchAuth }) => {
             variant="outlined"
             value={userInformation.email || ''}
             onChange={handleInputChange}
+            error={isError}
           />
           <TextField
             name="password"
             label={t('auth.login.password')}
             variant="outlined"
+            type="password"
             value={userInformation.password || ''}
             onChange={handleInputChange}
+            error={isError}
           />
           <Button variant="contained" type="submit">
             {t('auth.login.login')}

@@ -4,7 +4,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Link } from 'react-router-dom';
 import { Login } from './Login/Login';
 import { useState } from 'react';
-import { SignUp } from './SignUp/SignUp';
+import { Register } from './Register/Register';
 
 export const Auth = () => {
   const [isOnLogin, setIsOnLogin] = useState(true);
@@ -33,7 +33,7 @@ export const Auth = () => {
           </IconButton>
         </Box>
         <Box className="w-full h-full p-36 flex items-center">
-          {isOnLogin ? <Login switchAuth={switchAuth} /> : <SignUp switchAuth={switchAuth} />}
+          {isOnLogin ? <Login switchAuth={switchAuth} /> : <Register switchAuth={switchAuth} />}
         </Box>
       </Grid>
     </Grid>

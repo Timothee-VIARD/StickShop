@@ -3,9 +3,11 @@
     "title": "StickShop",
     "language": "FR",
     "true": "Oui",
-    "false": "Non"
+    "false": "Non",
+    "settings": "Paramètres"
   },
   "auth": {
+    "title": "Compte",
     "login": {
       "title": "Se connecter",
       "email": "Email",
@@ -80,5 +82,10 @@
       "save": "Sauvegarder",
       "required": "Champ obligatoire"
     }
+  },
+  "error": {
+    "INVALID_DATA": "Données incorrectes",
+    "INVALID_CREDENTIALS": "Identifiants incorrects",
+    "ER_DUP_ENTRY": "Utilisateur déjà existant"
   }
 }
