@@ -15,7 +15,7 @@ class AuthService {
           } else {
             connection.query(
               'INSERT INTO users (email, password, username, role) VALUES (?, ?, ?, ?)',
-              [email, hash, username, 'user'],
+              [email, hash, username, 'USER'],
               (error, results) => {
                 if (error) {
                   reject(error);
@@ -36,27 +36,31 @@ class AuthService {
     return new Promise((resolve, reject) => {
       const { email, password } = body;
       if (email && password) {
-        connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
-          if (error) {
-            reject(error);
-          } else if (results.length > 0) {
-            const user = results[0];
-            bcrypt.compare(password, user.password, (error, same) => {
-              if (error) {
-                reject(error);
-              } else if (same) {
-                const token = jwt.sign({ id: user.id }, 'token', {
-                  expiresIn: '24h'
-                });
-                resolve({ ...user, token: token });
-              } else {
-                reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
-              }
-            });
-          } else {
-            reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
+        connection.query(
+          'SELECT users.*, profile.image as profilePhoto FROM users LEFT JOIN profile ON users.id = profile.userId WHERE email = ?',
+          [email],
+          (error, results) => {
+            if (error) {
+              reject(error);
+            } else if (results.length > 0) {
+              const user = results[0];
+              bcrypt.compare(password, user.password, (error, same) => {
+                if (error) {
+                  reject(error);
+                } else if (same) {
+                  const token = jwt.sign({ id: user.id }, 'token', {
+                    expiresIn: '24h'
+                  });
+                  resolve({ ...user, token: token });
+                } else {
+                  reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
+                }
+              });
+            } else {
+              reject(new CustomError('Invalid credentials', ERROR_CODES.INVALID_CREDENTIALS));
+            }
           }
-        });
+        );
       } else {
         reject(new CustomError('Email and password are required', ERROR_CODES.INVALID_DATA));
       }

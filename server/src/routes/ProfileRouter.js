@@ -1,6 +1,7 @@
 import express from 'express';
 import ProfileService from '../services/ProfileService.js';
-import { logWarning } from '../errors/DisplayError.js';
+import { logInfo, logWarning } from '../errors/DisplayError.js';
+import MulterService from '../services/MulterService.js';
 
 const router = express.Router();
 
@@ -14,9 +15,9 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', MulterService.configureMulter().single('image'), async (req, res) => {
   try {
-    const result = await ProfileService.createProfile(req.body);
+    const result = await ProfileService.createProfile(req.body, req.file);
     res.status(201).json(result);
   } catch (error) {
     logWarning(`${error.code} - ${error.message}`);
@@ -24,10 +25,11 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.post('/update', async (req, res) => {
+router.post('/update', MulterService.configureMulter().single('image'), async (req, res) => {
   try {
-    const result = await ProfileService.updateProfile(req.body);
+    const result = await ProfileService.updateProfile(req.body, req.file);
     res.status(200).json(result);
+    logInfo('Profile updated');
   } catch (error) {
     logWarning(`${error.code} - ${error.message}`);
     res.status(400).json({ error: error.code });

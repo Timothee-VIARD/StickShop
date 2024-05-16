@@ -24,11 +24,11 @@ create table users
 create table profile
 (
     id       int auto_increment primary key,
-    user_id  int not null unique,
-    firstName varchar(255) not null,
-    lastName varchar(255) not null,
-    address varchar(255) not null,
-    phone varchar(255) not null,
+    userId  int not null unique,
+    firstName varchar(255),
+    lastName varchar(255),
+    address varchar(255),
+    phone varchar(255),
     image varchar(255),
-    foreign key (user_id) references users (id)
+    foreign key (userId) references users (id)
 );
