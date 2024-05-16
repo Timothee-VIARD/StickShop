@@ -1,20 +1,24 @@
 import { Button, Divider, Stack, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { ProfileContext } from '../../../contexts/ProfileContext';
+import { useHistory } from 'react-router-dom';
 
 export const Login = ({ switchAuth }) => {
   const { t } = useTranslation();
   const [userInformation, setUserInformation] = useState({});
   const [isError, setIsError] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { updateProfile, getToken, updateToken } = useContext(ProfileContext);
+  const history = useHistory();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getToken();
     if (token) {
-      window.location.href = '/';
+      history.push('/');
     }
   }, []);
 
@@ -50,14 +54,16 @@ export const Login = ({ switchAuth }) => {
         throw new Error(errorData.error);
       } else {
         const data = await response.json();
-        localStorage.setItem('token', data.token);
+        updateToken(data.token);
         const user = {
           id: data.userId,
           username: data.username,
-          role: data.role
+          email: data.email,
+          role: data.role,
+          profilePhoto: data.profilePhoto
         };
-        localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = '/';
+        updateProfile({ user: user, userInformation: {} });
+        history.push('/');
       }
     } catch (error) {
       const errorMessage = t(`error.${error.message}`);

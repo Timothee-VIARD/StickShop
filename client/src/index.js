@@ -14,25 +14,30 @@ import { ProductsManagementPage } from './pages/ProductsManagementPage';
 import { ProductEditPage } from './pages/ProductEditPage';
 import { AuthPage } from './pages/AuthPage';
 import { SnackbarProvider } from 'notistack';
+import ProfilePage from './pages/ProfilePage';
+import { ProfileProvider } from './contexts/ProfileContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={2} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
-        <CartProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/auth" component={AuthPage} />
-              <Route exact path="/shop" component={ShopPage} />
-              <Route exact path="/contact" component={ContactPage} />
-              <Route exact path="/admin" component={ProductsManagementPage} />
-              <Route exact path="/admin/product/:id" component={ProductEditPage} />
-              <Route component={PageNotFound} />
-            </Switch>
-          </Router>
-        </CartProvider>
+        <ProfileProvider>
+          <CartProvider>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/auth" component={AuthPage} />
+                <Route exact path="/shop" component={ShopPage} />
+                <Route exact path="/contact" component={ContactPage} />
+                <Route exact path="/profile" component={ProfilePage} />
+                <Route exact path="/admin" component={ProductsManagementPage} />
+                <Route exact path="/admin/product/:id" component={ProductEditPage} />
+                <Route component={PageNotFound} />
+              </Switch>
+            </Router>
+          </CartProvider>
+        </ProfileProvider>
       </SnackbarProvider>
     </ThemeProvider>
   </React.StrictMode>

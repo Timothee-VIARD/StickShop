@@ -28,6 +28,10 @@
       "register": "Register",
       "haveAccount": "Already have an account ?",
       "error": "An error occurred while registering"
+    },
+    "roles": {
+      "ADMIN": "Administrator",
+      "USER": "User"
     }
   },
   "pageNotFound": {
@@ -60,6 +64,24 @@
   },
   "contact": {
     "title": "Contact"
+  },
+  "profile": {
+    "title": "Profile",
+    "username": "User name",
+    "email": "Email",
+    "role": "Role",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Name",
+    "address": "Address",
+    "phone": "Phone number",
+    "photo": "Profile photo",
+    "info": "Personal information",
+    "contact": "Contact information",
+    "required": "Required",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "admin": {
     "title": "Store management",
