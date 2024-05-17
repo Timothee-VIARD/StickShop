@@ -20,3 +20,15 @@ create table users
     password varchar(255) not null,
     role     varchar(255) not null
 );
+
+create table profile
+(
+    id       int auto_increment primary key,
+    userId  int not null unique,
+    firstName varchar(255),
+    lastName varchar(255),
+    address varchar(255),
+    phone varchar(255),
+    image varchar(255),
+    foreign key (userId) references users (id)
+);

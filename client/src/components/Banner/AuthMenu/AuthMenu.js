@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import {
   Avatar,
   Card,
@@ -14,17 +14,16 @@ import {
 import IconButton from '@mui/material/IconButton';
 import { Logout, Settings } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { Link, useHistory } from 'react-router-dom';
+import { ProfileContext } from '../../../contexts/ProfileContext';
 
-export const AuthMenu = ({ bannerRef }) => {
+export const AuthMenu = () => {
   const { t } = useTranslation();
-  const [user, setUser] = useState({ id: '', username: '', role: '' });
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const lock = useRef(false);
-
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, []);
+  const { getProfile, updateProfile, updateToken } = useContext(ProfileContext);
+  const history = useHistory();
 
   const openMenu = (event) => {
     if (lock.current) return;
@@ -38,21 +37,28 @@ export const AuthMenu = ({ bannerRef }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
-    window.location.href = '/';
+    updateProfile({ user: {}, userInformation: {} });
+    updateToken(null);
+    history.push('/');
   };
 
   const redirect = () => {
-    window.location.href = '/auth';
+    history.push('/auth');
+  };
+
+  const ProfileUser = () => {
+    return (
+      <Avatar sx={{ width: 32, height: 32 }} src={getProfile().user.id ? getProfile().user.profilePhoto : undefined}>
+        {getProfile().user.id ? getProfile().user.username.charAt(0).toUpperCase() : ''}
+      </Avatar>
+    );
   };
 
   return (
     <>
       <Tooltip title={`${!open ? t('auth.title') : ''}`}>
         <IconButton
-          onClick={user ? openMenu : redirect}
+          onClick={getProfile().user.id ? openMenu : redirect}
           size="small"
           sx={{ ml: 2 }}
           aria-controls={open ? 'account-menu' : undefined}
@@ -60,18 +66,18 @@ export const AuthMenu = ({ bannerRef }) => {
           aria-expanded={open ? 'true' : undefined}
           className="ml-0"
         >
-          <Avatar sx={{ width: 32, height: 32 }}>{user ? user.username.charAt(0).toUpperCase() : ''}</Avatar>
+          <ProfileUser />
         </IconButton>
       </Tooltip>
-      {user && (
+      {getProfile().user.id && (
         <ClickAwayListener mouseEvent="onMouseUp" touchEvent="onTouchEnd" onClickAway={openMenu}>
           <Popper open={open} anchorEl={anchorEl} placement="bottom-end" className="z-20">
             <Card elevation={5} className="backgroundColor rounded-2xl mt-4 p-4 min-w-64">
               <Stack>
-                <MenuItem>
+                <MenuItem component={Link} to={'/profile'}>
                   <Stack direction="row" spacing={2} className="items-center">
-                    <Avatar />
-                    <Typography>{user.username}</Typography>
+                    <ProfileUser />
+                    <Typography>{getProfile().user.username}</Typography>
                   </Stack>
                 </MenuItem>
                 <Divider />

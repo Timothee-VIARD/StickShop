@@ -1,5 +1,4 @@
 import connection from './DBService.js';
-import multer from 'multer';
 
 class AdminService {
   static async getAllProducts() {
@@ -116,20 +115,6 @@ class AdminService {
         }
       });
     });
-  }
-
-  static configureMulter() {
-    const storage = multer.diskStorage({
-      destination: (req, file, callback) => {
-        const uploadDir = './images';
-        callback(null, uploadDir);
-      },
-      filename: (req, file, callback) => {
-        const fileName = `${file.originalname}`;
-        callback(null, fileName);
-      }
-    });
-    return multer({ storage: storage });
   }
 }
 

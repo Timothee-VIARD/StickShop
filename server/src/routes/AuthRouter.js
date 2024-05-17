@@ -22,6 +22,8 @@ router.post('/login', async (req, res) => {
       userId: result.id,
       username: result.username,
       role: result.role,
+      email: result.email,
+      profilePhoto: result.profilePhoto,
       token: result.token
     });
   } catch (error) {

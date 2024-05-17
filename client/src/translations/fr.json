@@ -28,6 +28,10 @@
       "register": "S'inscrire",
       "haveAccount": "Déjà inscrit ?",
       "error": "Erreur d'inscription"
+    },
+    "roles": {
+      "ADMIN": "Administrateur",
+      "USER": "Utilisateur"
     }
   },
   "pageNotFound": {
@@ -60,6 +64,24 @@
   },
   "contact": {
     "title": "Contact"
+  },
+  "profile": {
+    "title": "Profile",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "role": "Rôle",
+    "password": "Mot de passe",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "photo": "Photo de profile",
+    "info": "Informations",
+    "contact": "Contact",
+    "required": "Champ obligatoire",
+    "edit": "Modifier",
+    "save": "Sauvegarder",
+    "cancel": "Annuler"
   },
   "admin": {
     "title": "Gestion de la boutique",

@@ -20,3 +20,8 @@ INSERT INTO users (username, email, password, role)
 VALUES
     ('admin', 'admind@admin.com', 'admin', 'admin'),
     ('user', 'user@user.com', 'user', 'user');
+
+INSERT INTO profile (user_id, firstName, lastName, address, phone, image)
+VALUES
+    (1, 'Admin', 'Admin', '1 rue de l''admin', '0123456789', 'http://localhost:3001/images/adminadmin.jpg'),
+    (2, 'User', 'User', '1 rue de l''user', '9879376542', 'http://localhost:3001/images/useruser.jpg');

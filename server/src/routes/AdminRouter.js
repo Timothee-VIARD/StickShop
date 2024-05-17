@@ -1,5 +1,6 @@
 import express from 'express';
 import AdminService from '../services/AdminService.js';
+import MulterService from '../services/MulterService.js';
 
 const router = express.Router();
 router.get('/', async (req, res) => {
@@ -22,7 +23,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/upload', AdminService.configureMulter().single('image'), async (req, res) => {
+router.post('/upload', MulterService.configureMulter().single('image'), async (req, res) => {
   try {
     const result = await AdminService.updateProduct(req.body, req.file);
     res.status(200).json(result);

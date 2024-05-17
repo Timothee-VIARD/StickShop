@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import { DrawerMenu } from './DrawerMenu/DrawerMenu';
-import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawer'; // Importez correctement le contexte
+import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawer';
 import './Banner.css';
 import '../../style/global.css';
 import { AuthMenu } from './AuthMenu/AuthMenu';
@@ -44,7 +44,7 @@ const Banner = () => {
           <Button color="inherit" onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}>
             {t('global.language')}
           </Button>
-          <AuthMenu bannerRef={bannerRef} />
+          <AuthMenu />
         </Stack>
       </Stack>
       <DrawerMenu menuOpen={menuOpen} handleDrawerToggle={handleDrawerToggle} />
