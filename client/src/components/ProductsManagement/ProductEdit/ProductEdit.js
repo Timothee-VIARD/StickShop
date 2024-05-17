@@ -53,7 +53,7 @@ export const ProductEdit = () => {
     data.append('inStock', product.inStock);
 
     try {
-      const response = await fetch('http://localhost:3001/admin/upload', {
+      const response = await fetch('http://localhost:3001/admin/update', {
         method: 'POST',
         body: data
       });
