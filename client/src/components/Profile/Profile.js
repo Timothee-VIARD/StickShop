@@ -5,7 +5,7 @@ import { closeSnackbar, enqueueSnackbar } from 'notistack';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { AutoWidthTextField } from '../Global/AutoWidthTextField';
-import { DropZoneComponent } from '../ProductsManagement/ProductEdit/DropZoneComponent/DropZoneComponent';
+import { DropZoneComponent } from '../Global/DropZoneComponent';
 import { ProfileContext } from '../../contexts/ProfileContext';
 
 export const Profile = () => {
