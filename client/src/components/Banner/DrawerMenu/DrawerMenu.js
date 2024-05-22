@@ -1,12 +1,16 @@
 import { Button, Divider, Drawer, Stack, Typography } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import '../Banner.css';
 import '../../../style/global.css';
+import { ProfileContext } from '../../../contexts/ProfileContext';
 
 export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
   const { t } = useTranslation();
+  const { getRole } = useContext(ProfileContext);
+
+  const isAdmin = getRole() === 'ADMIN';
 
   const navItems = [
     {
@@ -21,10 +25,7 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
       title: t('contact.title'),
       link: '/contact'
     },
-    {
-      title: t('admin.title'),
-      link: '/admin'
-    }
+    ...(isAdmin ? [{ title: t('admin.title'), link: '/admin' }] : [])
   ];
 
   return (

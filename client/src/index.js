@@ -17,6 +17,7 @@ import { SnackbarProvider } from 'notistack';
 import ProfilePage from './pages/ProfilePage';
 import { ProfileProvider } from './contexts/ProfileContext';
 import { CreateProductPage } from './pages/CreateProductPage';
+import AdminRoute from './routes/AdminRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,9 +33,9 @@ root.render(
                 <Route exact path="/shop" component={ShopPage} />
                 <Route exact path="/contact" component={ContactPage} />
                 <Route exact path="/profile" component={ProfilePage} />
-                <Route exact path="/admin" component={ProductsManagementPage} />
-                <Route exact path="/admin/product/:id" component={ProductEditPage} />
-                <Route exact path="/admin/create" component={CreateProductPage} />
+                <AdminRoute exact path="/admin" component={ProductsManagementPage} />
+                <AdminRoute exact path="/admin/product/:id" component={ProductEditPage} />
+                <AdminRoute exact path="/admin/create" component={CreateProductPage} />
                 <Route component={PageNotFound} />
               </Switch>
             </Router>

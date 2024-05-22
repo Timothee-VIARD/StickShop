@@ -34,9 +34,13 @@ export const ProfileProvider = ({ children }) => {
     return profile;
   };
 
+  const getRole = () => {
+    return profile.user.role;
+  };
+
   const cartContext = useMemo(
-    () => ({ getProfile, updateProfile, getToken, updateToken }),
-    [getProfile, updateProfile, getToken, updateToken]
+    () => ({ getProfile, updateProfile, getToken, updateToken, getRole }),
+    [getProfile, updateProfile, getToken, updateToken, getRole]
   );
 
   return <ProfileContext.Provider value={cartContext}>{children}</ProfileContext.Provider>;
