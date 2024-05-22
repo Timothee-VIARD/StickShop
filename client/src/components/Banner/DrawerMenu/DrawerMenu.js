@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import '../Banner.css';
 import '../../../style/global.css';
 import { ProfileContext } from '../../../contexts/ProfileContext';
+import HomeIcon from '@mui/icons-material/HomeOutlined';
+import ShopIcon from '@mui/icons-material/ShoppingCartOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import { ContactPhoneOutlined } from '@mui/icons-material';
 
 export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
   const { t } = useTranslation();
@@ -15,17 +19,15 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
   const navItems = [
     {
       title: t('home.title'),
-      link: '/'
+      link: '/',
+      icon: <HomeIcon />
     },
     {
       title: t('shop.title'),
-      link: '/shop'
+      link: '/shop',
+      icon: <ShopIcon />
     },
-    {
-      title: t('contact.title'),
-      link: '/contact'
-    },
-    ...(isAdmin ? [{ title: t('admin.title'), link: '/admin' }] : [])
+    ...(isAdmin ? [{ title: t('admin.title'), link: '/admin', icon: <TuneOutlinedIcon /> }] : [])
   ];
 
   return (
@@ -45,12 +47,29 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
             </Typography>
           </Stack>
           <Divider className="w-full" />
-          <Stack spacing={1}>
-            {navItems.map((item) => (
-              <Button component={Link} to={item.link} key={item.title} variant="text" color="primary">
-                {item.title}
+          <Stack direction="column" className="h-full justify-between w-full">
+            <Stack spacing={1}>
+              {navItems.map((item) => (
+                <Button
+                  component={Link}
+                  to={item.link}
+                  key={item.title}
+                  variant="text"
+                  color="primary"
+                  className="gap-2"
+                >
+                  {item.icon}
+                  {item.title}
+                </Button>
+              ))}
+            </Stack>
+            <Stack direction="column" className="w-full" spacing={2}>
+              <Divider className="w-full" />
+              <Button component={Link} to="/contact" variant="text" color="primary" className="gap-2">
+                <ContactPhoneOutlined />
+                {t('contact.title')}
               </Button>
-            ))}
+            </Stack>
           </Stack>
         </Stack>
       </Drawer>
