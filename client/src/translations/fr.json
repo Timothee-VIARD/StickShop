@@ -85,6 +85,7 @@
   },
   "admin": {
     "title": "Gestion de la boutique",
+    "subtitle": "Produits de la boutique",
     "id": "ID",
     "name": "Nom",
     "price": "Prix",
@@ -102,12 +103,28 @@
       "inStock": "Est en stock",
       "category": "Catégorie",
       "save": "Sauvegarder",
+      "cancel": "Annuler",
       "required": "Champ obligatoire"
-    }
+    },
+    "createProduct": {
+      "title": "Ajouter un produit",
+      "details": "Détails",
+      "name": "Nom",
+      "price": "Prix",
+      "description": "Description",
+      "quantity": "Quantité",
+      "inStock": "Est en stock",
+      "category": "Catégorie",
+      "save": "Sauvegarder",
+      "cancel": "Annuler",
+      "required": "Champ obligatoire"
+    },
+    "deleted": "Produit supprimé"
   },
   "error": {
     "INVALID_DATA": "Données incorrectes",
     "INVALID_CREDENTIALS": "Identifiants incorrects",
-    "ER_DUP_ENTRY": "Utilisateur déjà existant"
+    "ER_DUP_ENTRY": "Utilisateur déjà existant",
+    "ER_BAD_NULL_ERROR": "Champ obligatoire"
   }
 }

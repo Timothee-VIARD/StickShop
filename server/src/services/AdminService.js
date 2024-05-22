@@ -30,11 +30,34 @@ class AdminService {
     });
   }
 
-  static async addProduct(product) {
+  static async addProduct(body, file) {
+    let imageUrl;
+    if (file) {
+      imageUrl = `http://localhost:3001/images/${file.filename}`;
+    }
+
+    const product = {
+      name: body.name,
+      price: body.price,
+      description: body.description,
+      category: body.category,
+      quantity: body.quantity,
+      inStock: body.inStock,
+      imageUrl: imageUrl
+    };
+
     return new Promise((resolve, reject) => {
       connection.query(
-        'INSERT INTO products (name, price, image) VALUES (?, ?, ?)',
-        [product.name, product.price, product.image],
+        'INSERT INTO products (name, price, description, category, quantity, inStock, image) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [
+          product.name,
+          product.price,
+          product.description,
+          product.category,
+          product.quantity,
+          product.inStock,
+          imageUrl
+        ],
         (err, results) => {
           if (err) {
             reject(err);

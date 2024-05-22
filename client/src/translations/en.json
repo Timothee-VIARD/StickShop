@@ -85,6 +85,7 @@
   },
   "admin": {
     "title": "Store management",
+    "subtitle": "Store products",
     "id": "ID",
     "name": "Name",
     "price": "Price",
@@ -102,12 +103,28 @@
       "inStock": "Is in stock",
       "category": "Category",
       "save": "Save",
+      "cancel": "Cancel",
       "required": "Required"
-    }
+    },
+    "createProduct": {
+      "title": "Add a product",
+      "details": "Details",
+      "name": "Name",
+      "price": "Price",
+      "description": "Description",
+      "quantity": "Quantity",
+      "inStock": "Is in stock",
+      "category": "Category",
+      "save": "Save",
+      "cancel": "Cancel",
+      "required": "Required"
+    },
+    "deleted": "Product deleted"
   },
   "error": {
     "INVALID_DATA": "Invalid data",
     "INVALID_CREDENTIALS": "Invalid credentials",
-    "ER_DUP_ENTRY": "User already exists"
+    "ER_DUP_ENTRY": "User already exists",
+    "ER_BAD_NULL_ERROR": "Missing data"
   }
 }

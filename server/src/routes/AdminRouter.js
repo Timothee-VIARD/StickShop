@@ -38,6 +38,31 @@ const router = express.Router();
  *         inStock:
  *           type: integer
  *           description: Indique si le produit est en stock
+ *     AdminProductAdd:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Nom du produit
+ *         price:
+ *           type: number
+ *           description: Prix du produit
+ *         description:
+ *           type: string
+ *           description: Description du produit
+ *         category:
+ *           type: string
+ *           description: Catégorie du produit
+ *         quantity:
+ *           type: integer
+ *           description: Quantité du produit
+ *         inStock:
+ *           type: integer
+ *           description: Indique si le produit est en stock
+ *         image:
+ *           type: string
+ *           format: binary
+ *           description: Fichier image à télécharger
  */
 
 /**
@@ -100,6 +125,64 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while fetching product.' });
+  }
+});
+
+/**
+ * @swagger
+ * /admin/add:
+ *   post:
+ *     summary: Ajouter un nouveau produit
+ *     tags: [Administration]
+ *     description: Endpoint permettant d'ajouter un nouveau produit avec une image
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             $ref: '#/components/schemas/AdminProductAdd'
+ *     responses:
+ *       200:
+ *         description: Ajout du produit réussi
+ *       500:
+ *         description: Erreur serveur lors de l'ajout du produit
+ */
+router.post('/add', MulterService.configureMulter().single('image'), async (req, res) => {
+  try {
+    const result = await AdminService.addProduct(req.body, req.file);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ error: error.code });
+  }
+});
+
+/**
+ * @swagger
+ * /admin/{id}:
+ *  delete:
+ *   summary: Supprimer un produit par son id
+ *   tags: [Administration]
+ *   description: Endpoint permettant de supprimer un produit par son id
+ *   parameters:
+ *     - in: path
+ *       name: id
+ *       required: true
+ *       description: ID du produit à supprimer
+ *       schema:
+ *         type: integer
+ *   responses:
+ *     200:
+ *       description: Suppression du produit réussie
+ *     500:
+ *       description: Erreur serveur lors de la suppression du produit
+ */
+router.delete('/:id', async (req, res) => {
+  try {
+    const result = await AdminService.deleteProduct(req.params.id);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while deleting product.' });
   }
 });
 

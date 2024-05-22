@@ -1,8 +1,12 @@
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { DropZoneComponent } from './DropZoneComponent/DropZoneComponent';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { DropZoneComponent } from '../../Global/DropZoneComponent';
+import { checkNumbers } from '../../../utils/global/Numbers';
+import IconButton from '@mui/material/IconButton';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useSnackbar } from 'notistack';
 
 export const ProductEdit = () => {
   const { t } = useTranslation();
@@ -10,6 +14,8 @@ export const ProductEdit = () => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true); // Add loading state
   const [file, setFile] = useState(null);
+  const history = useHistory();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   useEffect(() => {
     fetch(`http://localhost:3001/products/${id}`)
@@ -62,33 +68,17 @@ export const ProductEdit = () => {
         throw new Error("Erreur lors de l'envoi du fichier");
       }
 
-      const responseData = await response.json();
-      console.log(responseData);
+      history.push('/admin');
     } catch (error) {
-      console.error("Erreur lors de l'envoi du fichier", error);
-    }
-  };
-
-  const checkNumbers = (event) => {
-    const { name, value } = event.target;
-    const isNumericKey = /^\d+$/.test(event.key);
-    const isControlKey = event.key === 'Control';
-    const isDeleteKey = event.key === 'Delete';
-    const isBackspaceKey = event.key === 'Backspace';
-    const isArrowKey = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(event.key);
-    const isCtrlDown = event.ctrlKey;
-    const isDotKey = event.key === '.';
-
-    if (
-      !isNumericKey &&
-      !isControlKey &&
-      !isDeleteKey &&
-      !isBackspaceKey &&
-      !isArrowKey &&
-      !(isCtrlDown && (isDeleteKey || isBackspaceKey)) &&
-      !(name === 'price' && isDotKey && !value.includes('.'))
-    ) {
-      event.preventDefault();
+      const errorMessage = t(`error.${error.message}`);
+      enqueueSnackbar(errorMessage, {
+        variant: 'error',
+        action: (key) => (
+          <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+            <CloseRoundedIcon fontSize="small" />
+          </IconButton>
+        )
+      });
     }
   };
 
@@ -162,7 +152,12 @@ export const ProductEdit = () => {
                   multiline
                 />
                 <Box className="flex justify-center">
-                  <Button type="submit">{t('admin.productEdit.save')}</Button>
+                  <Stack direction="row" spacing={2}>
+                    <Button type="submit">{t('admin.productEdit.save')}</Button>
+                    <Button component={Link} to={'/admin'} color="error">
+                      {t('admin.productEdit.cancel')}
+                    </Button>
+                  </Stack>
                 </Box>
               </Stack>
             </Box>
