@@ -18,6 +18,7 @@ import ProfilePage from './pages/ProfilePage';
 import { ProfileProvider } from './contexts/ProfileContext';
 import { CreateProductPage } from './pages/CreateProductPage';
 import AdminRoute from './routes/AdminRoute';
+import OrderPage from './pages/OrderPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +32,7 @@ root.render(
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/auth" component={AuthPage} />
                 <Route exact path="/shop" component={ShopPage} />
+                <Route exact path="/shop/order" component={OrderPage} />
                 <Route exact path="/contact" component={ContactPage} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <AdminRoute exact path="/admin" component={ProductsManagementPage} />

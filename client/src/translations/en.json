@@ -50,7 +50,9 @@
       "title": "Cart",
       "totalPrice": "Total price",
       "totalItems": "Total items",
-      "clear": "Empty the cart"
+      "empty": "Your cart is empty !",
+      "clear": "Empty the cart",
+      "order": "Order"
     },
     "shopItem": {
       "addButton": "Add to the cart",
@@ -60,6 +62,46 @@
       "stock": "Stock",
       "category": "Category",
       "rate": "Rate"
+    }
+  },
+  "order": {
+    "title": "Order",
+    "order": "Order",
+    "orderDetails": {
+      "title": "Order details",
+      "totalItems": "Total items"
+    },
+    "orderSummary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "totalPrice": "Total price",
+      "paymentMethod": "Payment method",
+      "creditCard": {
+        "title": "Credit card",
+        "cardNumber": "Card number",
+        "expirationDate": "Expiration date",
+        "cvv": "CVV"
+      },
+      "paypal": {
+        "title": "Paypal",
+        "email": "Email",
+        "password": "Password"
+      },
+      "billingAddress": {
+        "title": "Billing address",
+        "address": "Address",
+        "city": "City",
+        "zipCode": "Zip code",
+        "country": "Country"
+      },
+      "pay": "Pay",
+      "cancel": "Cancel"
+    },
+    "orderSuccess": {
+      "title": "Order success",
+      "message": "Your order has been successfully placed. Thank you for your purchase !",
+      "return": "Return to the home page"
     }
   },
   "contact": {
