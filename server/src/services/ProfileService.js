@@ -86,7 +86,7 @@ class ProfileService {
 
                     connection.query(
                       'UPDATE users SET username = ?, email = ? WHERE id = ?',
-                      [user.username, user.email, user.userId],
+                      [user.username, user.email, user.id],
                       (err, results) => {
                         if (err) {
                           return connection.rollback(() => {
