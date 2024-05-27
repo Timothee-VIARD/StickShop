@@ -105,7 +105,24 @@
     }
   },
   "contact": {
-    "title": "Contact"
+    "title": "Contact",
+    "contactInfo": {
+      "title": "Informations de contact",
+      "address": "123 rue des bâtons",
+      "phone": "+33 07 67 05 41 04",
+      "email": "timothee.viardtv@gmail.com"
+    },
+    "contactForm": {
+      "title": "Formulaire de contact",
+      "description": "Pour toute question ou demande d'information, n'hésitez pas à nous contacter en remplissant le formulaire ci-dessous.",
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "send": "Envoyer"
+    },
+    "mapTitle": "Où nous trouver",
+    "mapPopup": "StickShop",
+    "mapPopupAddress": "Adresse : 123 rue des bâtons"
   },
   "profile": {
     "title": "Profile",

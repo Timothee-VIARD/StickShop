@@ -1,9 +1,89 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Email, LocationOn, Phone } from '@mui/icons-material';
 
 export const Contact = () => {
+  const { t } = useTranslation();
+
   return (
-    <Box className="text-center pt-14 pb-2">
-      <Typography variant="h4">Contact</Typography>
+    <Box className="pt-14 pb-2">
+      <Typography variant="h4" className="text-center">
+        {t('contact.title')}
+      </Typography>
+      <Stack direction="row" spacing={6} className="my-12 mx-24">
+        <Stack direction="column" spacing={1} className="w-1/2">
+          <Typography variant="h5" className="font-bold">
+            {t('contact.contactForm.title')}
+          </Typography>
+          <Typography>{t('contact.contactForm.description')}</Typography>
+          <Grid container spacing={2} className="ml-[-16px]">
+            <Grid item xs={6}>
+              <Typography className="font-bold">{t('contact.contactForm.name')}</Typography>
+              <TextField fullWidth variant="outlined" placeholder={t('contact.contactForm.name')} />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography className="font-bold">{t('contact.contactForm.email')}</Typography>
+              <TextField fullWidth variant="outlined" placeholder={t('contact.contactForm.email')} />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography className="font-bold">{t('contact.contactForm.message')}</Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                placeholder={t('contact.contactForm.message')}
+                multiline
+                rows={4}
+              />
+            </Grid>
+          </Grid>
+          <Button variant="contained" className="rounded-2xl">
+            {t('contact.contactForm.send')}
+          </Button>
+        </Stack>
+        <Stack direction="column" spacing={1} className="w-1/2">
+          <Typography variant="h5" className="font-bold">
+            {t('contact.mapTitle')}
+          </Typography>
+          <MapContainer center={[47.49334256508192, -0.5508496586542]} zoom={13} className="w-full h-full rounded-2xl">
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[47.49334256508192, -0.5508496586542]}>
+              <Popup>
+                <Stack direction="column" spacing={1}>
+                  <Typography variant="h6" className="font-bold">
+                    {t('contact.mapPopup')}
+                  </Typography>
+                  <Typography>{t('contact.mapPopupAddress')}</Typography>
+                </Stack>
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </Stack>
+      </Stack>
+      <Box className="flex justify-center my-12">
+        <Stack direction="column" spacing={2} className="p-6 rounded-2xl bg-black bg-opacity-5">
+          <Typography variant="h5" className="font-bold">
+            {t('contact.contactInfo.title')}
+          </Typography>
+          <Stack direction="column" spacing={1}>
+            <Typography>
+              <LocationOn />
+              {t('contact.contactInfo.address')}
+            </Typography>
+            <Typography>
+              <Phone />
+              {t('contact.contactInfo.phone')}
+            </Typography>
+            <Typography>
+              <Email />
+              {t('contact.contactInfo.email')}
+            </Typography>
+          </Stack>
+        </Stack>
+      </Box>
     </Box>
   );
 };
