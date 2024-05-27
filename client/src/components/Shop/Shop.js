@@ -1,5 +1,5 @@
 import AvailableProducts from './AvailableProducts/AvailableProducts';
-import { Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 /**
@@ -10,14 +10,10 @@ const Shop = () => {
 
   return (
     <main>
-      <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
+      <Typography variant="h4" className="pt-14 flex-grow text-center">
         {t('shop.title')}
       </Typography>
-      <Grid container spacing={2} className="px-16 pb-4">
-        <Grid item xs={6} sm={12} lg={12}>
-          <AvailableProducts />
-        </Grid>
-      </Grid>
+      <AvailableProducts />
     </main>
   );
 };

@@ -60,7 +60,7 @@ const ShoppingCart = ({ closeDrawer }) => {
   };
 
   return (
-    <Box className="backgroundColor p-7 z-30 w-[470px] max-w-[470px] overflow-hidden h-full max-h-full">
+    <Box className="backgroundColor p-7 z-30 w-full md:w-[470px] md:max-w-[470px] overflow-hidden h-full max-h-full">
       <Stack spacing={3} className="h-full justify-between">
         <Stack direction="column" className="h-fit" spacing={3}>
           <Stack direction="row" className="items-center justify-between">

@@ -11,8 +11,8 @@ export const Contact = () => {
       <Typography variant="h4" className="text-center">
         {t('contact.title')}
       </Typography>
-      <Stack direction="row" spacing={6} className="my-12 mx-24">
-        <Stack direction="column" spacing={1} className="w-1/2">
+      <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} className="my-12 mx-6 sm:mx-16 md:mx-24">
+        <Stack direction="column" spacing={1} className="w-full md:w-1/2">
           <Typography variant="h5" className="font-bold">
             {t('contact.contactForm.title')}
           </Typography>
@@ -41,11 +41,15 @@ export const Contact = () => {
             {t('contact.contactForm.send')}
           </Button>
         </Stack>
-        <Stack direction="column" spacing={1} className="w-1/2">
+        <Stack direction="column" spacing={1} className="w-full md:w-1/2">
           <Typography variant="h5" className="font-bold">
             {t('contact.mapTitle')}
           </Typography>
-          <MapContainer center={[47.49334256508192, -0.5508496586542]} zoom={13} className="w-full h-full rounded-2xl">
+          <MapContainer
+            center={[47.49334256508192, -0.5508496586542]}
+            zoom={13}
+            className="w-full h-80 md:h-full rounded-2xl"
+          >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

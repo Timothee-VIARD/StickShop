@@ -40,7 +40,7 @@ const Order = () => {
       <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
         {t('order.title')}
       </Typography>
-      <Stack direction="row" className="mx-24 my-12" spacing={6}>
+      <Stack direction={{ xs: 'column', md: 'row' }} className="mx-6 md:mx-24 my-12" spacing={6}>
         <Stack direction="column" className="flex-grow" spacing={2}>
           <Stack direction="row" className="justify-between">
             <Typography variant="h5" className="pt-2 pb-2 font-bold">
@@ -54,7 +54,11 @@ const Order = () => {
             {Object.entries(productsGrouped).map(([id, products], index) => (
               <Stack key={id} spacing={2}>
                 <Stack direction="row" spacing={2} alignItems="center">
-                  <img src={products[0].image} alt={products[0].name} className="w-32 h-32 rounded-[10px]" />
+                  <img
+                    src={products[0].image}
+                    alt={products[0].name}
+                    className="w-24 md:w-32 h-24 md:h-32 rounded-[10px]"
+                  />
                   <Stack spacing={2}>
                     <Typography variant="h6" display="block">
                       {`${products[0].name}`}
@@ -80,7 +84,11 @@ const Order = () => {
             ))}
           </Stack>
         </Stack>
-        <Stack direction="column" className="w-[30em] p-5 rounded-2xl bg-black bg-opacity-5 h-fit" spacing={2}>
+        <Stack
+          direction="column"
+          className="w-full md:w-[30em] p-5 rounded-2xl bg-black bg-opacity-5 h-fit"
+          spacing={2}
+        >
           <Stack direction="column" spacing={2}>
             <Typography variant="h5" className="font-bold">
               {t('order.orderSummary.title')}

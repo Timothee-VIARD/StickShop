@@ -178,12 +178,12 @@ export const Profile = () => {
         <Typography variant="h4" className="pt-14 pb-10 flex-grow text-center">
           {t('profile.title')}
         </Typography>
-        <Box className="sm:w-11/12 lg:w-2/3 rounded-2xl bg-black bg-opacity-5">
-          <Stack direction="row">
+        <Box className="w-11/12 lg:w-2/3 rounded-2xl bg-black bg-opacity-5">
+          <Stack direction={{ xs: 'column', md: 'row' }}>
             <Stack
               direction="column"
               spacing={4}
-              className="w-1/3 justify-center items-center p-6 rounded-l-2xl bg-main bg-opacity-70"
+              className="w-full md:w-1/3 justify-center items-center p-6 rounded-t-2xl md:rounded-tr-none md:rounded-l-2xl bg-main bg-opacity-70"
             >
               {isEditing ? (
                 <Box className="sm:w-11/12 xl:w-5/6">
@@ -217,7 +217,7 @@ export const Profile = () => {
                 <Typography variant="h6">{t(`auth.roles.${newUser?.role}`)}</Typography>
               </Stack>
             </Stack>
-            <Stack direction="column" gap={4} className="w-2/3 p-6">
+            <Stack direction="column" gap={4} className="w-full md:w-2/3 p-6">
               <Stack direction="column" gap={2}>
                 <Stack direction="column">
                   <Typography variant="h6" className="font-bold">

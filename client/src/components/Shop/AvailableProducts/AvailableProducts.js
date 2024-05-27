@@ -22,12 +22,12 @@ const AvailableProducts = () => {
   }, []);
 
   return (
-    <Grid container spacing={2} className="px-4 pb-4">
+    <Grid container spacing={3} className="p-8 md:p-16 md:p-8">
       {products.length !== 0 ? (
         products.map((product, index) => (
-          <Grid item xs={12} sm={6} lg={3} key={product.id}>
+          <Grid item xs={12} sm={6} lg={3} key={product.id} className="w-full flex-grow">
             <Grow in={checked} timeout={index * 100}>
-              <Box className="h-full">
+              <Box className="h-full w-full flex-grow">
                 <Product product={product} />
               </Box>
             </Grow>

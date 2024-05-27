@@ -25,7 +25,12 @@ export const CarouselProducts = () => {
     >
       {products.map((product, i) => (
         <Box key={i}>
-          <CardMedia sx={{ height: 450 }} image={product.image} title={product.name} className="rounded-t-2xl" />
+          <CardMedia
+            sx={{ height: { xs: 200, md: 450 } }}
+            image={product.image}
+            title={product.name}
+            className="rounded-t-2xl"
+          />
         </Box>
       ))}
     </Carousel>
