@@ -178,7 +178,7 @@ export const Profile = () => {
         <Typography variant="h4" className="pt-14 pb-10 flex-grow text-center">
           {t('profile.title')}
         </Typography>
-        <Box className="sm:w-11/12 lg:w-2/3 border-2 border-black rounded-2xl bg-black bg-opacity-10">
+        <Box className="sm:w-11/12 lg:w-2/3 rounded-2xl bg-black bg-opacity-5">
           <Stack direction="row">
             <Stack
               direction="column"

@@ -50,7 +50,9 @@
       "title": "Panier",
       "totalPrice": "Prix total",
       "totalItems": "Nombre d'articles",
-      "clear": "Vider le panier"
+      "empty": "Votre panier est vide !",
+      "clear": "Vider le panier",
+      "order": "Commander"
     },
     "shopItem": {
       "addButton": "Ajouter au panier",
@@ -60,6 +62,46 @@
       "stock": "Stock",
       "category": "Catégorie",
       "rate": "Note"
+    }
+  },
+  "order": {
+    "title": "Commande",
+    "order": "Commander",
+    "orderDetails": {
+      "title": "Détails de la commande",
+      "totalItems": "Nombre d'articles"
+    },
+    "orderSummary": {
+      "title": "Résumé de la commande",
+      "subtotal": "Sous-total",
+      "shipping": "Frais de port",
+      "totalPrice": "Prix total",
+      "paymentMethod": "Méthode de paiement",
+      "creditCard": {
+        "title": "Carte de crédit",
+        "cardNumber": "Numéro de carte",
+        "expirationDate": "Date d'expiration",
+        "cvv": "CVV"
+      },
+      "paypal": {
+        "title": "Paypal",
+        "email": "Email",
+        "password": "Mot de passe"
+      },
+      "billingAddress": {
+        "title": "Adresse de facturation",
+        "address": "Adresse",
+        "city": "Ville",
+        "zipCode": "Code postal",
+        "country": "Pays"
+      },
+      "pay": "Payer",
+      "cancel": "Annuler"
+    },
+    "orderSuccess": {
+      "title": "Commande effectuée",
+      "message": "Votre commande a bien été enregistrée. Merci pour votre achat !",
+      "return": "Retourner à la boutique"
     }
   },
   "contact": {
