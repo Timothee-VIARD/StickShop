@@ -28,7 +28,7 @@ const Banner = () => {
   };
 
   return (
-    <header ref={bannerRef} className="mainColor p-2 px-8 fixed top-0 z-10 w-full">
+    <header ref={bannerRef} className="mainColor p-2 px-8 fixed top-0 z-[1200] w-full">
       <Stack direction="row" className="justify-between">
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleDrawerToggle}>
