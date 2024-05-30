@@ -3,12 +3,17 @@ import { useTranslation } from 'react-i18next';
 import React, { useContext } from 'react';
 import { CurrencyContext } from '../../../contexts/CurrencyContext';
 import { ProfileContext } from '../../../contexts/ProfileContext';
+import IconButton from '@mui/material/IconButton';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useSnackbar } from 'notistack';
+import { numberRound } from '../../../utils/global/Numbers';
 
-export const OrderValidation = ({ isOpen, setIsOpen, data, shipping }) => {
+export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem }) => {
   const theme = useTheme();
   const { t } = useTranslation();
   const { getCurrency } = useContext(CurrencyContext);
   const { getProfile } = useContext(ProfileContext);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const currentDatePlusFiveDay = () => {
     const date = new Date();
@@ -19,12 +24,65 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, shipping }) => {
   const orderNumberFromUsername = () => {
     const username = getProfile().user.username;
     const number = parseInt(username, 36);
-    const currentDate = new Date();
-    return currentDate.toISOString().split('T')[0].split('-').reverse().join('') + number;
+    const currentDate = new Date().toISOString().split('T')[0].split('-').reverse().join('');
+    const currentTime = new Date().toISOString().split('T')[1].split('Z')[0].split(':').join('');
+    return parseInt(currentDate) + parseInt(currentTime) + number;
   };
 
   const handleClose = () => {
     setIsOpen(false);
+  };
+
+  const handleConfirm = async () => {
+    const dataToSend = {
+      orderNumber: orderNumberFromUsername(),
+      userId: getProfile().user.id,
+      orderDate: new Date().toISOString().split('T')[0].split('-').reverse().join('.'),
+      deliveryDate: currentDatePlusFiveDay(),
+      address: data.address,
+      city: data.city,
+      zipCode: data.zipCode,
+      country: data.country,
+      paymentMethod: data.email ? 'Paypal' : 'Credit Card',
+      totalPrice: data.totalPrice,
+      status: 'Pending'
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/orders/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      } else {
+        const successMessage = t(`order.orderSuccess.message`);
+        enqueueSnackbar(successMessage, {
+          variant: 'success',
+          action: (key) => (
+            <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+              <CloseRoundedIcon fontSize="small" />
+            </IconButton>
+          )
+        });
+        removePurchaseItem();
+      }
+    } catch (error) {
+      const errorMessage = t(`error.${error.message}`);
+      enqueueSnackbar(errorMessage, {
+        variant: 'error',
+        action: (key) => (
+          <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+            <CloseRoundedIcon fontSize="small" />
+          </IconButton>
+        )
+      });
+    }
   };
 
   return (
@@ -53,7 +111,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, shipping }) => {
               {t('order.orderValidation.totalPrice')} :
             </Typography>
             <Typography variant="body1" className="text-xs sm:text-base">
-              {data?.totalPrice} {t(`parameters.currency.${getCurrency()}`)}
+              {numberRound(data?.totalPrice)} {t(`parameters.currency.${getCurrency()}`)}
             </Typography>
           </Stack>
           <Stack direction="row" className="justify-between">
@@ -176,7 +234,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, shipping }) => {
             variant="contained"
             color="primary"
             size="small"
-            onClick={handleClose}
+            onClick={handleConfirm}
             className="w-1/2 text-xs sm:text-base"
           >
             {t('order.orderValidation.confirm')}

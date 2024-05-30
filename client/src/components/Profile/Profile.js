@@ -78,7 +78,6 @@ export const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(isNewProfile);
 
     const formData = new FormData();
     if (file) {

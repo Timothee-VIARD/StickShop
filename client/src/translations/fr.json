@@ -255,7 +255,7 @@
   "error": {
     "INVALID_DATA": "Données incorrectes",
     "INVALID_CREDENTIALS": "Identifiants incorrects",
-    "ER_DUP_ENTRY": "Utilisateur déjà existant",
+    "ER_DUP_ENTRY": "Objet déjà existant",
     "ER_BAD_NULL_ERROR": "Champ obligatoire"
   }
 }

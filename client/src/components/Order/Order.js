@@ -4,20 +4,25 @@ import { numberRound } from '../../utils/global/Numbers';
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Add, Remove } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CurrencyContext } from '../../contexts/CurrencyContext';
 import { OrderValidation } from './OrderValidation/OrderValidation';
+import { useSnackbar } from 'notistack';
+import IconButton from '@mui/material/IconButton';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 const Order = () => {
   const { t } = useTranslation();
 
   const [isPaypalMethod, setIsPaypalMethod] = useState(false);
-  const { cart, addToCart, removeFromCart, getTotalPrice, getTotalNumber } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, getTotalPrice, getTotalNumber, resetCart } = useContext(CartContext);
   const [total, setTotal] = useState(0);
   const { getCurrency } = useContext(CurrencyContext);
   const [isValidationModalOpen, setIsValidationModalOpen] = useState(false);
   const [paymentData, setPaymentData] = useState();
   const [isError, setIsError] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const history = useHistory();
   const shipping = 5.99;
 
   useEffect(() => {
@@ -37,8 +42,6 @@ const Order = () => {
   }, [isPaypalMethod]);
 
   const groubBy = (array, key) => {
-    console.log(cart);
-
     return array.reduce((result, currentValue) => {
       (result[currentValue[key]] = result[currentValue[key]] || []).push(currentValue);
       return result;
@@ -57,7 +60,6 @@ const Order = () => {
     const isValid = checkIfAllInfoIsFilled();
     if (isValid) {
       setIsValidationModalOpen(true);
-      console.log('valid');
     } else {
       setIsError(true);
     }
@@ -78,11 +80,50 @@ const Order = () => {
     } else {
       methodIsOk = paymentData?.cardNumber && paymentData?.expirationDate && paymentData?.cvv;
     }
-    console.log(methodIsOk);
     return paymentData?.address && paymentData?.city && paymentData?.zipCode && paymentData?.country && methodIsOk;
   };
 
   const productsGrouped = groubBy(cart, 'id');
+
+  const removePurchaseItem = async () => {
+    console.log('removePurchaseItem');
+    console.log('productsGrouped', Object.entries(productsGrouped));
+    for (const [id, products] of Object.entries(productsGrouped)) {
+      console.log('id', id);
+      console.log('products', products);
+
+      const url = `http://localhost:3001/products/updateQuantity/${id}`;
+      const body = {
+        quantity: products[0].quantity - products.length
+      };
+      try {
+        const response = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error);
+        } else {
+          resetCart();
+          history.push('/shop');
+        }
+      } catch (error) {
+        const errorMessage = t(`error.${error.message}`);
+        enqueueSnackbar(errorMessage, {
+          variant: 'error',
+          action: (key) => (
+            <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+              <CloseRoundedIcon fontSize="small" />
+            </IconButton>
+          )
+        });
+      }
+    }
+  };
   return (
     <main>
       <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
@@ -321,6 +362,7 @@ const Order = () => {
         isOpen={isValidationModalOpen}
         setIsOpen={setIsValidationModalOpen}
         data={{ ...paymentData, totalPrice: total }}
+        removePurchaseItem={removePurchaseItem}
       />
     </main>
   );

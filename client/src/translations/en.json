@@ -255,7 +255,7 @@
   "error": {
     "INVALID_DATA": "Invalid data",
     "INVALID_CREDENTIALS": "Invalid credentials",
-    "ER_DUP_ENTRY": "User already exists",
+    "ER_DUP_ENTRY": "Object already exists",
     "ER_BAD_NULL_ERROR": "Missing data"
   }
 }
