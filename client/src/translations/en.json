@@ -172,6 +172,39 @@
     "save": "Save",
     "cancel": "Cancel"
   },
+  "parameters": {
+    "title": "Parameters",
+    "language": {
+      "title": "Language",
+      "en": "English",
+      "fr": "French"
+    },
+    "theme": {
+      "title": "Theme",
+      "lightMode": "Light mode",
+      "darkMode": "Dark Mode"
+    },
+    "timezone": {
+      "title": "Timezone",
+      "1": "America/New_York",
+      "2": "Europe/Paris",
+      "3": "Asia/Tokyo",
+      "4": "Pacific/Auckland",
+      "5": "Africa/Cairo"
+    },
+    "currency": {
+      "title": "Currency",
+      "euro": "€",
+      "dollar": "$",
+      "yen": "¥",
+      "pound": "£",
+      "rupee": "₹",
+      "won": "₩",
+      "ruble": "₽"
+    },
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "admin": {
     "title": "Store management",
     "subtitle": "Store products",

@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { CartContext } from '../../../../contexts/CartContext';
 import ProductInformation from '../ProductInformation/ProductInformation';
 import { useTranslation } from 'react-i18next';
+import { CurrencyContext } from '../../../../contexts/CurrencyContext';
 
 /**
  * Commponent for the Menu
@@ -12,6 +13,7 @@ const Product = ({ product }) => {
   const { t } = useTranslation();
 
   const { addToCart, resetDocumentTitle } = useContext(CartContext);
+  const { getCurrency } = useContext(CurrencyContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -40,7 +42,7 @@ const Product = ({ product }) => {
               {product.name}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`${t('shop.shopItem.price')} : ${product.price} €`}
+              {`${t('shop.shopItem.price')} : ${product.price} ${t(`parameters.currency.${getCurrency()}`)}`}
             </Typography>
           </CardContent>
         </Box>

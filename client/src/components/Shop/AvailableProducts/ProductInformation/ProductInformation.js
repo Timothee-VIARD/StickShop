@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { CartContext } from '../../../../contexts/CartContext';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useTranslation } from 'react-i18next';
+import { CurrencyContext } from '../../../../contexts/CurrencyContext';
 
 /**
  * Commponent to have more information for a product
@@ -12,6 +13,7 @@ const ProductInformation = ({ product, isOpen, handleOpenModal }) => {
   const { t } = useTranslation();
 
   const { addToCart } = useContext(CartContext);
+  const { getCurrency } = useContext(CurrencyContext);
 
   const [isBottom, setIsBottom] = useState(false);
   const modalRef = useRef(null);
@@ -31,7 +33,7 @@ const ProductInformation = ({ product, isOpen, handleOpenModal }) => {
               {product.name}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
-              {`${t('shop.shopItem.price')} : ${product.price} €`}
+              {`${t('shop.shopItem.price')} : ${product.price} ${t(`parameters.currency.${getCurrency()}`)}`}
             </Typography>
             <Typography gutterBottom variant="h6" component="div">
               {`${t('shop.shopItem.description')} : ${product.description}`}

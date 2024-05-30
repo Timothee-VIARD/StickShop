@@ -1,10 +1,12 @@
-import React, { createContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import { numberRound } from '../utils/global/Numbers';
 import { useTranslation } from 'react-i18next';
+import { CurrencyContext } from './CurrencyContext';
 
 export const CartProvider = ({ children }) => {
   const { t } = useTranslation();
   const [cart, setCart] = useState([]);
+  const { getCurrency } = useContext(CurrencyContext);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -32,7 +34,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const resetDocumentTitle = () => {
-    document.title = `${t('shop.shopCart.title')} - ${getTotalPrice()} €`;
+    document.title = `${t('shop.shopCart.title')} - ${getTotalPrice()} ${t(`parameters.currency.${getCurrency()}`)}`;
   };
 
   const cartContext = useMemo(
