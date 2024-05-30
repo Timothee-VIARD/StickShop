@@ -189,7 +189,7 @@ router.delete('/:id', async (req, res) => {
 /**
  * @swagger
  * /admin/update:
- *   post:
+ *   put:
  *     summary: Mettre à jour un produit
  *     tags: [Administration]
  *     description: Endpoint permettant de mettre à jour un produit avec une image
@@ -230,7 +230,7 @@ router.delete('/:id', async (req, res) => {
  *       500:
  *         description: Erreur serveur lors de la mise à jour du produit
  */
-router.post('/update', MulterService.configureMulter().single('image'), async (req, res) => {
+router.put('/update', MulterService.configureMulter().single('image'), async (req, res) => {
   try {
     const result = await AdminService.updateProduct(req.body, req.file);
     res.status(200).json(result);

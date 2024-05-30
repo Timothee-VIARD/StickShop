@@ -128,12 +128,42 @@
       "pay": "Pay",
       "cancel": "Cancel"
     },
+    "orderValidation": {
+      "title": "Order validation",
+      "message": "Please check your order information before confirming it",
+      "orderNumber": "Order number",
+      "totalPrice": "Total price",
+      "deliveryDate": "Delivery date",
+      "confirm": "Confirm order",
+      "cancel": "Cancel"
+    },
     "orderSuccess": {
       "title": "Order success",
       "message": "Your order has been successfully placed. Thank you for your purchase !",
       "return": "Return to the home page"
     }
   },
+  "orders": {
+    "title": "Orders",
+    "order": "Order No.",
+    "orderNumber": "Order number",
+    "totalPrice": "Total price",
+    "orderDate": "Date of order",
+    "deliveryDate": "Delivery date",
+    "status": "Status",
+    "cancel": "Cancel order",
+    "cancelled": "Order cancelled",
+    "cancelSuccess": "Order cancelled",
+    "orderAddress": {
+      "title": "Delivery address"
+    },
+    "steps": {
+      "ordered": "Ordered",
+      "paymentValidation": "Payment validation",
+      "delivering": "Livraison",
+      "delivered": "Delivered"
+      }
+    },
   "contact": {
     "title": "Contact",
     "contactInfo": {
@@ -246,7 +276,7 @@
   "error": {
     "INVALID_DATA": "Invalid data",
     "INVALID_CREDENTIALS": "Invalid credentials",
-    "ER_DUP_ENTRY": "User already exists",
+    "ER_DUP_ENTRY": "Object already exists",
     "ER_BAD_NULL_ERROR": "Missing data"
   }
 }

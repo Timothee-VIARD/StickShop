@@ -30,6 +30,24 @@ class ProductService {
       });
     });
   }
+
+  static async updateProductQuantity(id, quantity) {
+    const isProductInStock = quantity > 0;
+    return new Promise((resolve, reject) => {
+      connection.query(
+        'UPDATE products SET quantity = ?, inStock = ? WHERE id = ?',
+        [quantity, isProductInStock, id],
+        (error, results) => {
+          if (error) {
+            console.error('Erreur lors de la requête UPDATE :', error);
+            reject({ code: 500, data: { error: 'Erreur serveur requête UPDATE.' } });
+          } else {
+            resolve({ code: 200, data: { message: 'Quantité du produit mise à jour.' } });
+          }
+        }
+      );
+    });
+  }
 }
 
 export default ProductService;
