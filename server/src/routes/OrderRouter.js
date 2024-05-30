@@ -184,6 +184,49 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//update
+/**
+ * @swagger
+ * /orders/updateStatus/{id}:
+ *  put:
+ *    summary: Mettre à jour le statut d'une commande par son ID
+ *    tags: [Orders]
+ *    description: Endpoint permettant de mettre à jour le statut d'une commande par son ID
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID de la commande à mettre à jour
+ *        schema:
+ *          type: integer
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *             status:
+ *               type: string
+ *               description: Statut de la commande
+ *    responses:
+ *      200:
+ *        description: Mise à jour du statut de la commande réussie
+ *      400:
+ *        description: Commande non trouvée
+ *      500:
+ *        description: Erreur serveur lors de la mise à jour du statut de la commande
+ */
+router.put('/updateStatus/:id', async (req, res) => {
+  try {
+    const result = await OrderService.updateStatusOrderById(req.params.id, req.body);
+    res.status(result?.code || 200).json(result);
+  } catch (error) {
+    logWarning(`${error.code} - ${error.message}`);
+    res.status(400).json({ error: error.code });
+  }
+});
+
 /**
  * @swagger
  * /orders/{id}:

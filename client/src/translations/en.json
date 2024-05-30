@@ -143,6 +143,27 @@
       "return": "Return to the home page"
     }
   },
+  "orders": {
+    "title": "Orders",
+    "order": "Order No.",
+    "orderNumber": "Order number",
+    "totalPrice": "Total price",
+    "orderDate": "Date of order",
+    "deliveryDate": "Delivery date",
+    "status": "Status",
+    "cancel": "Cancel order",
+    "cancelled": "Order cancelled",
+    "cancelSuccess": "Order cancelled",
+    "orderAddress": {
+      "title": "Delivery address"
+    },
+    "steps": {
+      "ordered": "Ordered",
+      "paymentValidation": "Payment validation",
+      "delivering": "Livraison",
+      "delivered": "Delivered"
+      }
+    },
   "contact": {
     "title": "Contact",
     "contactInfo": {

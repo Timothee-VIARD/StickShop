@@ -45,7 +45,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
       country: data.country,
       paymentMethod: data.email ? 'Paypal' : 'Credit Card',
       totalPrice: data.totalPrice,
-      status: 'Pending'
+      status: 'PENDING'
     };
 
     try {

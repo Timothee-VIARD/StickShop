@@ -84,6 +84,22 @@ class OrderService {
     });
   }
 
+  static async updateStatusOrderById(id, body) {
+    return new Promise((resolve, reject) => {
+      connection.query('UPDATE orders SET status = ? WHERE id = ?', [body.status, id], (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          if (results.affectedRows === 0) {
+            reject(new CustomError('Order not found with this id', ERROR_CODES.OBJECT_NOT_FOUND));
+          } else {
+            resolve(results[0]);
+          }
+        }
+      });
+    });
+  }
+
   static async deleteOrderById(id) {
     return new Promise((resolve, reject) => {
       connection.query('DELETE FROM orders WHERE id = ?', [id], (error, results) => {

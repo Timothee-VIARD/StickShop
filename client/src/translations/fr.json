@@ -143,6 +143,27 @@
       "return": "Retourner à la boutique"
     }
   },
+  "orders": {
+    "title": "Commandes",
+    "order": "Commande n°",
+    "orderNumber": "Numéro de commande",
+    "totalPrice": "Prix total",
+    "orderDate": "Date de commande",
+    "deliveryDate": "Date de livraison",
+    "status": "Statut",
+    "cancel": "Annuler la commande",
+    "cancelled": "Commande annulée",
+    "cancelSuccess": "Commande annulée",
+    "orderAddress": {
+      "title": "Adresse de livraison"
+    },
+    "steps": {
+      "ordered": "Commandé",
+      "paymentValidation": "Validation du paiement",
+      "delivering": "Livraison",
+      "delivered": "Livré"
+    }
+  },
   "contact": {
     "title": "Contact",
     "contactInfo": {
