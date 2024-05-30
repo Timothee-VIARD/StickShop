@@ -128,6 +128,15 @@
       "pay": "Payer",
       "cancel": "Annuler"
     },
+    "orderValidation": {
+      "title": "Validation de la commande",
+      "message": "Veuillez vérifier les informations de votre commande avant de la confirmer.",
+      "orderNumber": "Numéro de commande",
+      "totalPrice": "Prix total",
+      "deliveryDate": "Date de livraison",
+      "confirm": "Confirmer la commande",
+      "cancel": "Annuler"
+    },
     "orderSuccess": {
       "title": "Commande effectuée",
       "message": "Votre commande a bien été enregistrée. Merci pour votre achat !",

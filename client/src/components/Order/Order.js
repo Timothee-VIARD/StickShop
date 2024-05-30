@@ -6,6 +6,7 @@ import { CartContext } from '../../contexts/CartContext';
 import { Add, Remove } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { CurrencyContext } from '../../contexts/CurrencyContext';
+import { OrderValidation } from './OrderValidation/OrderValidation';
 
 const Order = () => {
   const { t } = useTranslation();
@@ -14,11 +15,27 @@ const Order = () => {
   const { cart, addToCart, removeFromCart, getTotalPrice, getTotalNumber } = useContext(CartContext);
   const [total, setTotal] = useState(0);
   const { getCurrency } = useContext(CurrencyContext);
+  const [isValidationModalOpen, setIsValidationModalOpen] = useState(false);
+  const [paymentData, setPaymentData] = useState();
+  const [isError, setIsError] = useState(false);
   const shipping = 5.99;
 
   useEffect(() => {
     setTotal(getTotalPrice() + shipping);
   }, [getTotalPrice]);
+
+  useEffect(() => {
+    // remove email, password, cardNumber, expirationDate, cvv from paymentData
+    setPaymentData((prevState) => {
+      delete prevState?.cardNumber;
+      delete prevState?.expirationDate;
+      delete prevState?.cvv;
+      delete prevState?.email;
+      delete prevState?.password;
+      return prevState;
+    });
+  }, [isPaypalMethod]);
+
   const groubBy = (array, key) => {
     console.log(cart);
 
@@ -34,6 +51,35 @@ const Order = () => {
 
   const removeProduct = (product) => {
     removeFromCart(product.id);
+  };
+
+  const handleOpenValidationModal = () => {
+    const isValid = checkIfAllInfoIsFilled();
+    if (isValid) {
+      setIsValidationModalOpen(true);
+      console.log('valid');
+    } else {
+      setIsError(true);
+    }
+  };
+
+  const handleChange = (event) => {
+    if (event.target.name === 'totalPrice') {
+      return;
+    }
+    setPaymentData({ ...paymentData, [event.target.name]: event.target.value });
+    setIsError(false);
+  };
+
+  const checkIfAllInfoIsFilled = () => {
+    let methodIsOk;
+    if (isPaypalMethod) {
+      methodIsOk = paymentData?.email && paymentData?.password;
+    } else {
+      methodIsOk = paymentData?.cardNumber && paymentData?.expirationDate && paymentData?.cvv;
+    }
+    console.log(methodIsOk);
+    return paymentData?.address && paymentData?.city && paymentData?.zipCode && paymentData?.country && methodIsOk;
   };
 
   const productsGrouped = groubBy(cart, 'id');
@@ -142,37 +188,61 @@ const Order = () => {
             <Stack spacing={2}>
               {isPaypalMethod ? (
                 <Stack spacing={2}>
-                  <TextField label={t('order.orderSummary.paypal.email')} variant="outlined" className="rounded-2xl" />
                   <TextField
+                    name={'email'}
+                    label={t('order.orderSummary.paypal.email')}
+                    variant="outlined"
+                    onChange={handleChange}
+                    className="rounded-2xl"
+                    required
+                    error={isError}
+                  />
+                  <TextField
+                    name={'password'}
                     label={t('order.orderSummary.paypal.password')}
                     variant="outlined"
+                    onChange={handleChange}
                     className="rounded-2xl"
+                    required
+                    error={isError}
                   />
                 </Stack>
               ) : (
                 <Grid container rowGap={2} columnSpacing={2} className="ml-[-16px]">
                   <Grid item xs={12}>
                     <TextField
+                      name={'cardNumber'}
                       label={t('order.orderSummary.creditCard.cardNumber')}
                       variant="outlined"
+                      onChange={handleChange}
                       className="rounded-2xl"
+                      required
                       fullWidth
+                      error={isError}
                     />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      name={'expirationDate'}
                       label={t('order.orderSummary.creditCard.expirationDate')}
                       variant="outlined"
+                      onChange={handleChange}
                       className="rounded-2xl"
+                      required
                       fullWidth
+                      error={isError}
                     />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
+                      name={'cvv'}
                       label={t('order.orderSummary.creditCard.cvv')}
                       variant="outlined"
+                      onChange={handleChange}
                       className="rounded-2xl"
+                      required
                       fullWidth
+                      error={isError}
                     />
                   </Grid>
                 </Grid>
@@ -185,34 +255,50 @@ const Order = () => {
                   <Grid container rowGap={2} columnSpacing={2} className="ml-[-16px]">
                     <Grid item xs={12}>
                       <TextField
+                        name={'address'}
                         label={t('order.orderSummary.billingAddress.address')}
                         variant="outlined"
+                        onChange={handleChange}
                         className="rounded-2xl"
+                        required
                         fullWidth
+                        error={isError}
                       />
                     </Grid>
                     <Grid item xs={6}>
                       <TextField
+                        name={'city'}
                         label={t('order.orderSummary.billingAddress.city')}
                         variant="outlined"
+                        onChange={handleChange}
                         className="rounded-2xl"
+                        required
                         fullWidth
+                        error={isError}
                       />
                     </Grid>
                     <Grid item xs={6}>
                       <TextField
+                        name={'zipCode'}
                         label={t('order.orderSummary.billingAddress.zipCode')}
                         variant="outlined"
+                        onChange={handleChange}
                         className="rounded-2xl"
+                        required
                         fullWidth
+                        error={isError}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
+                        name={'country'}
                         label={t('order.orderSummary.billingAddress.country')}
                         variant="outlined"
+                        onChange={handleChange}
                         className="rounded-2xl"
+                        required
                         fullWidth
+                        error={isError}
                       />
                     </Grid>
                   </Grid>
@@ -225,12 +311,17 @@ const Order = () => {
             <Button variant="outlined" className="rounded-2xl" component={Link} to="/shop">
               {t('order.orderSummary.cancel')}
             </Button>
-            <Button variant="contained" className="rounded-2xl">
+            <Button variant="contained" className="rounded-2xl" onClick={handleOpenValidationModal}>
               {`${t('order.orderSummary.pay')} ${numberRound(total)} ${t(`parameters.currency.${getCurrency()}`)}`}
             </Button>
           </Stack>
         </Stack>
       </Stack>
+      <OrderValidation
+        isOpen={isValidationModalOpen}
+        setIsOpen={setIsValidationModalOpen}
+        data={{ ...paymentData, totalPrice: total }}
+      />
     </main>
   );
 };
