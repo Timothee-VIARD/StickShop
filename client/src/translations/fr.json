@@ -42,7 +42,37 @@
   "home": {
     "title": "Accueil",
     "welcome": "Bienvenue sur StickShop !",
-    "description": "StickShop est un site de vente en ligne de bâtons. Nous proposons une large gamme de bâtons pour tous les goûts. N'hésitez pas à parcourir notre boutique pour trouver le bâton qui vous correspond !"
+    "description": "StickShop est un site de vente en ligne de bâtons. Nous proposons une large gamme de bâtons pour tous les goûts. N'hésitez pas à parcourir notre boutique pour trouver le bâton qui vous correspond !",
+    "map": {
+      "title": "Carte de nos fournisseurs",
+      "description": "Nos bâtons sont soigneusement sélectionnés dans les forêts les plus prestigieuses du monde, garantissant une origine naturelle et authentique. Explorez notre collection et découvrez les histoires fascinantes de chaque bâton, provenant des forêts luxuriantes d'Amérique du Nord, des bois mystiques d'Europe, aux jungles exotiques d'Asie. Cliquez sur la carte pour en savoir plus sur l'origine de nos produits et laissez-vous transporter par la magie des bois d'exception.",
+      "forests": {
+        "forest1": "Forêt de Fontainebleau: Chênes, pins et bouleaux",
+        "forest2": "Parc National du Mont Rainier: Sapins, épicéas et pruches",
+        "forest3": "Forêt de Caledonian: Pins calédoniens et bouleaux",
+        "forest4": "Parc National de Brasília: Cerrado (arbres et arbustes tropicaux)",
+        "forest5": "Forêt de l'île de Åland: Pins et épicéas",
+        "forest6": "Bosque de Chapultepec: Pins, chênes et cèdres",
+        "forest7": "Forêt de Brovary: Pins et bouleaux",
+        "forest8": "Yosemite National Park: Séquoias, pins et chênes",
+        "forest9": "Forêt de Castel Fusano: Pins parasols et chênes verts",
+        "forest10": "Thetford Forest: Pins sylvestres et chênes",
+        "forest11": "Forêt de Nyungwe: Forêt tropicale (acajous, ébènes et caoutchoucs)",
+        "forest12": "Tarkine Forest: Forêt tempérée humide (myrtles et eucalyptus)",
+        "forest13": "Forêt de Hoia: Chênes, hêtres et frênes",
+        "forest14": "Forêt de Chouf: Chênes, cèdres et pins",
+        "forest15": "Forêt Noire: Sapins, épicéas et pins",
+        "forest16": "Mangroves d'Abu Dhabi: Avicennia marina (mangroves)",
+        "forest17": "Sherbrooke Forest: Eucalyptus et fougères arborescentes",
+        "forest18": "Forêt de Jérusalem: Pins d'Alep, cyprès et chênes",
+        "forest19": "Drakensberg: Forêt afro-montagnarde (podocarpus et acajous)",
+        "forest20": "Nuuksio National Park: Pins, épicéas et bouleaux"
+      }
+    },
+    "video": {
+      "title": "Un de nos fournisseur",
+      "description": "Découvrez l'un de nos fournisseurs, située en France en Ariège, passionné par les bâtons de marche. A travers cette interview proposée par La dépêche du midi, il nous partage sa passion pour les bâtons et nous explique comment il les fabrique."
+    }
   },
   "shop": {
     "title": "Boutique",

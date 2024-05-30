@@ -71,7 +71,7 @@ export const AuthMenu = () => {
       </Tooltip>
       {getProfile().user.id && (
         <ClickAwayListener mouseEvent="onMouseUp" touchEvent="onTouchEnd" onClickAway={openMenu}>
-          <Popper open={open} anchorEl={anchorEl} placement="bottom-end" className="z-20">
+          <Popper open={open} anchorEl={anchorEl} placement="bottom-end" className="z-[1200]">
             <Card elevation={5} className="backgroundColor rounded-2xl mt-4 p-4 min-w-64">
               <Stack>
                 <MenuItem component={Link} to={'/profile'}>

@@ -38,6 +38,7 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
         ModalProps={{
           keepMounted: true // Better open performance on mobile.
         }}
+        anchor={'left'}
       >
         <Stack onClick={handleDrawerToggle} spacing={4} className="backgroundColor w-[300px] p-4 items-center h-full">
           <Stack direction="row" spacing={2}>

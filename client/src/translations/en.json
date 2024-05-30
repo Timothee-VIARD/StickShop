@@ -42,7 +42,37 @@
   "home": {
     "title": "Home",
     "welcome": "Welcome to StickShop !",
-    "description": "StickShop is an online retailer of sticks. We offer a wide range of sticks to suit all tastes. Feel free to browse our shop to find the stick that's right for you !"
+    "description": "StickShop is an online retailer of sticks. We offer a wide range of sticks to suit all tastes. Feel free to browse our shop to find the stick that's right for you !",
+    "map": {
+      "title": "Map of our suppliers",
+      "description": "Our sticks are carefully selected from the world's most prestigious forests, guaranteeing a natural and authentic origin. Explore our collection and discover the fascinating stories behind each stick, from the lush forests of North America, the mystical woods of Europe, to the exotic jungles of Asia. Click on the map to find out more about the origins of our products and let yourself be transported by the magic of exceptional woods.",
+      "forests": {
+        "forest1": "Fontainebleau Forest: Oaks, pines and birches",
+        "forest2": "Mount Rainier National Park: Firs, spruces and hemlocks",
+        "forest3": "Caledonian Forest: Scots pines and birches",
+        "forest4": "Brasília National Park: Cerrado (tropical trees and shrubs)",
+        "forest5": "Åland Island Forest: Pines and spruces",
+        "forest6": "Chapultepec Forest: Pines, oaks and cedars",
+        "forest7": "Brovary Forest: Pines and birches",
+        "forest8": "Yosemite National Park: Sequoias, pines and oaks",
+        "forest9": "Castel Fusano Forest: Umbrella pines and holm oaks",
+        "forest10": "Thetford Forest: Scots pines and oaks",
+        "forest11": "Nyungwe Forest: Tropical rainforest (mahoganies, ebonies and rubbers)",
+        "forest12": "Tarkine Forest: Temperate rainforest (myrtles and eucalyptus)",
+        "forest13": "Hoia Forest: Oaks, beeches and ashes",
+        "forest14": "Chouf Forest: Oaks, cedars and pines",
+        "forest15": "Black Forest: Firs, spruces and pines",
+        "forest16": "Abu Dhabi Mangroves: Avicennia marina (mangroves)",
+        "forest17": "Sherbrooke Forest: Eucalyptus and tree ferns",
+        "forest18": "Jerusalem Forest: Aleppo pines, cypresses and oaks",
+        "forest19": "Drakensberg: Afro-montane forest (podocarpus and mahoganies)",
+        "forest20": "Nuuksio National Park: Pines, spruces and birches"
+      }
+    },
+    "video": {
+      "title": "One of our suppliers",
+      "description": "Discover one of our suppliers, located in Ariège, France, who is passionate about walking sticks. In this interview with La dépêche du midi, he shares his passion for sticks and explains how he makes them."
+    }
   },
   "shop": {
     "title": "Shop",

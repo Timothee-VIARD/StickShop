@@ -10,6 +10,7 @@ import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawe
 import './Banner.css';
 import '../../style/global.css';
 import { AuthMenu } from './AuthMenu/AuthMenu';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   const { t } = useTranslation();
@@ -34,8 +35,8 @@ const Banner = () => {
           <IconButton onClick={handleDrawerToggle}>
             <MenuIcon />
           </IconButton>
-          <img src="/LogoStickShop.png" alt="Logo" className="h-8 rotate-logo" />
-          <Typography fontWeight="bold" variant="h6" className="flex items-center">
+          <img src="/LogoStickShop.png" alt="Logo" className="h-8 rotate-logo hidden sm:block" />
+          <Typography fontWeight="bold" variant="h6" className="hidden sm:flex items-center " component={Link} to="/">
             {t('global.title')}
           </Typography>
         </Stack>
