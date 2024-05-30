@@ -107,7 +107,7 @@ router.post('/create', MulterService.configureMulter().single('image'), async (r
 /**
  * @swagger
  * /profile/update:
- *   post:
+ *   put:
  *     summary: Mettre à jour le profil utilisateur
  *     tags: [Profile]
  *     description: Endpoint permettant de mettre à jour le profil utilisateur
@@ -123,7 +123,7 @@ router.post('/create', MulterService.configureMulter().single('image'), async (r
  *       400:
  *         description: Erreur lors de la mise à jour du profil
  */
-router.post('/update', MulterService.configureMulter().single('image'), async (req, res) => {
+router.put('/update', MulterService.configureMulter().single('image'), async (req, res) => {
   try {
     const result = await ProfileService.updateProfile(req.body, req.file);
     res.status(200).json(result);

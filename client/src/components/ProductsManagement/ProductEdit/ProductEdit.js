@@ -60,7 +60,7 @@ export const ProductEdit = () => {
 
     try {
       const response = await fetch('http://localhost:3001/admin/update', {
-        method: 'POST',
+        method: 'PUT',
         body: data
       });
 

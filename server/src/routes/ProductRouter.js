@@ -117,4 +117,49 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /products/updateQuantity/{id}:
+ *   put:
+ *     summary: Mettre à jour la quantité d'un produit
+ *     tags: [Products]
+ *     description: Endpoint permettant de mettre à jour la quantité d'un produit
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID du produit à mettre à jour
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               quantity:
+ *                 type: integer
+ *                 description: Nouvelle quantité du produit
+ *     responses:
+ *       200:
+ *         description: Quantité du produit mise à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       400:
+ *         description: Requête incorrecte
+ *       500:
+ *         description: Erreur serveur lors de la mise à jour de la quantité du produit
+ */
+router.put('/updateQuantity/:id', async (req, res) => {
+  try {
+    const result = await ProductService.updateProductQuantity(req.params.id, req.body.quantity);
+    res.status(result.code || 200).json(result);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while updating product quantity.' });
+  }
+});
+
 export default router;
