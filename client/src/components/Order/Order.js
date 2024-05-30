@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Add, Remove } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { CurrencyContext } from '../../contexts/CurrencyContext';
 
 const Order = () => {
   const { t } = useTranslation();
@@ -12,6 +13,7 @@ const Order = () => {
   const [isPaypalMethod, setIsPaypalMethod] = useState(false);
   const { cart, addToCart, removeFromCart, getTotalPrice, getTotalNumber } = useContext(CartContext);
   const [total, setTotal] = useState(0);
+  const { getCurrency } = useContext(CurrencyContext);
   const shipping = 5.99;
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Order = () => {
                     </Stack>
                   </Stack>
                   <Typography variant="h6" className="flex-grow text-end">
-                    {`${numberRound(products[0].price * products.length)} €`}
+                    {`${numberRound(products[0].price * products.length)} ${t(`parameters.currency.${getCurrency()}`)}`}
                   </Typography>
                 </Stack>
                 {index < Object.entries(productsGrouped).length - 1 && <Divider />}
@@ -96,18 +98,22 @@ const Order = () => {
             <Stack direction="column">
               <Stack direction="row" className="justify-between">
                 <Typography variant="h6">{t('order.orderSummary.subtotal')}</Typography>
-                <Typography variant="h6">{`${numberRound(getTotalPrice())} €`}</Typography>
+                <Typography variant="h6">{`${numberRound(getTotalPrice())} ${t(
+                  `parameters.currency.${getCurrency()}`
+                )}`}</Typography>
               </Stack>
               <Stack direction="row" className="justify-between">
                 <Typography variant="h6">{t('order.orderSummary.shipping')}</Typography>
-                <Typography variant="h6">{`${shipping} €`}</Typography>
+                <Typography variant="h6">{`${shipping} ${t(`parameters.currency.${getCurrency()}`)}`}</Typography>
               </Stack>
             </Stack>
             <Stack direction="row" className="justify-between">
               <Typography variant="h6" className="font-bold">
                 {t('order.orderSummary.totalPrice')}
               </Typography>
-              <Typography variant="h6" className="font-bold">{`${numberRound(total)} €`}</Typography>
+              <Typography variant="h6" className="font-bold">{`${numberRound(total)} ${t(
+                `parameters.currency.${getCurrency()}`
+              )}`}</Typography>
             </Stack>
           </Stack>
           <Divider />
@@ -220,7 +226,7 @@ const Order = () => {
               {t('order.orderSummary.cancel')}
             </Button>
             <Button variant="contained" className="rounded-2xl">
-              {`${t('order.orderSummary.pay')} ${numberRound(total)} €`}
+              {`${t('order.orderSummary.pay')} ${numberRound(total)} ${t(`parameters.currency.${getCurrency()}`)}`}
             </Button>
           </Stack>
         </Stack>

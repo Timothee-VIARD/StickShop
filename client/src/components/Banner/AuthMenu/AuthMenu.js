@@ -81,7 +81,7 @@ export const AuthMenu = () => {
                   </Stack>
                 </MenuItem>
                 <Divider />
-                <MenuItem>
+                <MenuItem component={Link} to={'/parameters'}>
                   <ListItemIcon>
                     <Settings fontSize="small" />
                   </ListItemIcon>

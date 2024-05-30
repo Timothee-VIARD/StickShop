@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
 import { localStorageKeys } from '../../utils/constants/LocalStorageKeys';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,7 @@ const Banner = () => {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const bannerRef = React.useRef(null);
+  const theme = useTheme();
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
@@ -29,14 +30,25 @@ const Banner = () => {
   };
 
   return (
-    <header ref={bannerRef} className="mainColor p-2 px-8 fixed top-0 z-[1200] w-full">
+    <Box
+      ref={bannerRef}
+      style={{ backgroundColor: theme.palette.secondary.main }}
+      className="p-2 px-8 fixed top-0 z-[1200] w-full"
+    >
       <Stack direction="row" className="justify-between">
         <Stack direction="row" spacing={2}>
           <IconButton onClick={handleDrawerToggle}>
             <MenuIcon />
           </IconButton>
           <img src="/LogoStickShop.png" alt="Logo" className="h-8 rotate-logo hidden sm:block" />
-          <Typography fontWeight="bold" variant="h6" className="hidden sm:flex items-center " component={Link} to="/">
+          <Typography
+            fontWeight="bold"
+            variant="h6"
+            style={{ color: theme.palette.primary.main }}
+            className="hidden sm:flex items-center "
+            component={Link}
+            to="/"
+          >
             {t('global.title')}
           </Typography>
         </Stack>
@@ -45,11 +57,12 @@ const Banner = () => {
           <Button color="inherit" onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}>
             {t('global.language')}
           </Button>
+
           <AuthMenu />
         </Stack>
       </Stack>
       <DrawerMenu menuOpen={menuOpen} handleDrawerToggle={handleDrawerToggle} />
-    </header>
+    </Box>
   );
 };
 

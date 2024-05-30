@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import { numberRound } from '../../../../utils/global/Numbers';
 import '../../../../style/global.css';
 import { Link } from 'react-router-dom';
+import { CurrencyContext } from '../../../../contexts/CurrencyContext';
 
 /**
  * Commponent for the shopping cart
@@ -17,6 +18,7 @@ const ShoppingCart = ({ closeDrawer }) => {
   const { t } = useTranslation();
   const { cart, removeFromCart, resetCart, addToCart, getTotalNumber, getTotalPrice, resetDocumentTitle } =
     useContext(CartContext);
+  const { currency, getCurrency } = useContext(CurrencyContext);
   const [total, setTotal] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const containerRef = useRef(null);
@@ -47,7 +49,7 @@ const ShoppingCart = ({ closeDrawer }) => {
     let totalPrice = getTotalPrice();
     setTotal(totalPrice);
     resetDocumentTitle();
-  }, [cart, t]);
+  }, [cart, t, currency]);
 
   const productsGrouped = groubBy(cart, 'id');
 
@@ -102,7 +104,9 @@ const ShoppingCart = ({ closeDrawer }) => {
                       </Stack>
                     </Stack>
                     <Typography variant="h6" className="flex-grow text-end">
-                      {`${numberRound(products[0].price * products.length)} €`}
+                      {`${numberRound(products[0].price * products.length)} ${t(
+                        `parameters.currency.${getCurrency()}`
+                      )}`}
                     </Typography>
                   </Stack>
                 </Stack>
@@ -117,7 +121,9 @@ const ShoppingCart = ({ closeDrawer }) => {
                 </Stack>
                 <Stack direction="row" className="justify-between">
                   <Typography variant="h6">{`${t('shop.shopCart.totalPrice')} :`}</Typography>
-                  <Typography variant="h6">{`${numberRound(total)} €`}</Typography>
+                  <Typography variant="h6">{`${numberRound(total)} ${t(
+                    `parameters.currency.${getCurrency()}`
+                  )}`}</Typography>
                 </Stack>
               </Stack>
               <Stack direction="column" spacing={1}>

@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import '../../style/global.css';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
  * Commponent for the footer
  */
 const Banner = () => {
+  const theme = useTheme();
   const { t } = useTranslation();
 
   return (
-    <footer className="mainColor p-2 px-8 flex justify-between">
+    <Box style={{ backgroundColor: theme.palette.secondary.main }} className="p-2 px-8 flex justify-between">
       <Button size="small" className="flex items-center" component={Link} to="/">
         <Typography fontWeight="bold" variant="h6" className="capitalize">
           {t('global.title')}
@@ -21,7 +22,7 @@ const Banner = () => {
           {t('contact.title')}
         </Typography>
       </Button>
-    </footer>
+    </Box>
   );
 };
 

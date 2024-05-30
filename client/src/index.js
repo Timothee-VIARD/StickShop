@@ -19,6 +19,8 @@ import { ProfileProvider } from './contexts/ProfileContext';
 import { CreateProductPage } from './pages/CreateProductPage';
 import AdminRoute from './routes/AdminRoute';
 import OrderPage from './pages/OrderPage';
+import { ParametersPage } from './pages/ParametersPage';
+import { CurrencyProvider } from './contexts/CurrencyContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,22 +28,25 @@ root.render(
     <ThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={2} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <ProfileProvider>
-          <CartProvider>
-            <Router>
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/auth" component={AuthPage} />
-                <Route exact path="/shop" component={ShopPage} />
-                <Route exact path="/shop/order" component={OrderPage} />
-                <Route exact path="/contact" component={ContactPage} />
-                <Route exact path="/profile" component={ProfilePage} />
-                <AdminRoute exact path="/admin" component={ProductsManagementPage} />
-                <AdminRoute exact path="/admin/product/:id" component={ProductEditPage} />
-                <AdminRoute exact path="/admin/create" component={CreateProductPage} />
-                <Route component={PageNotFound} />
-              </Switch>
-            </Router>
-          </CartProvider>
+          <CurrencyProvider>
+            <CartProvider>
+              <Router>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route exact path="/auth" component={AuthPage} />
+                  <Route exact path="/shop" component={ShopPage} />
+                  <Route exact path="/shop/order" component={OrderPage} />
+                  <Route exact path="/contact" component={ContactPage} />
+                  <Route exact path="/profile" component={ProfilePage} />
+                  <Route exact path="/parameters" component={ParametersPage} />
+                  <AdminRoute exact path="/admin" component={ProductsManagementPage} />
+                  <AdminRoute exact path="/admin/product/:id" component={ProductEditPage} />
+                  <AdminRoute exact path="/admin/create" component={CreateProductPage} />
+                  <Route component={PageNotFound} />
+                </Switch>
+              </Router>
+            </CartProvider>
+          </CurrencyProvider>
         </ProfileProvider>
       </SnackbarProvider>
     </ThemeProvider>

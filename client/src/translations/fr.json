@@ -172,6 +172,39 @@
     "save": "Sauvegarder",
     "cancel": "Annuler"
   },
+  "parameters": {
+    "title": "Paramètres",
+    "language": {
+      "title": "Langue",
+      "en": "Anglais",
+      "fr": "Français"
+    },
+    "theme": {
+      "title": "Thème",
+      "lightMode": "Mode clair",
+      "darkMode": "Mode sombre"
+    },
+    "timezone": {
+      "title": "Fuseau horaire",
+      "1": "America/New_York",
+      "2": "Europe/Paris",
+      "3": "Asia/Tokyo",
+      "4": "Pacific/Auckland",
+      "5": "Africa/Cairo"
+    },
+    "currency": {
+      "title": "Devise",
+      "euro": "€",
+      "dollar": "$",
+      "yen": "¥",
+      "pound": "£",
+      "rupee": "₹",
+      "won": "₩",
+      "ruble": "₽"
+    },
+    "save": "Sauvegarder",
+    "cancel": "Annuler"
+  },
   "admin": {
     "title": "Gestion de la boutique",
     "subtitle": "Produits de la boutique",
