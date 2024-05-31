@@ -162,7 +162,8 @@
       "paymentValidation": "Payment validation",
       "delivering": "Livraison",
       "delivered": "Delivered"
-      }
+      },
+    "noOrders": "No orders found"
     },
   "contact": {
     "title": "Contact",
@@ -271,12 +272,33 @@
       "cancel": "Cancel",
       "required": "Required"
     },
-    "deleted": "Product deleted"
+    "deleted": "Product deleted",
+    "orders": {
+      "title": "Order management",
+      "orderNumber": "Order number",
+      "userId": "User ID",
+      "totalPrice": "Total price",
+      "orderDate": "Order date",
+      "deliveryDate": "Delivery date",
+      "status": "Status",
+      "address": "Delivery address",
+      "paymentMethod": "Payment method",
+      "steps": {
+        "ordered": "Ordered",
+        "paymentValidation": "Validation",
+        "delivering": "Delivering",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      },
+      "delete": "Delete",
+      "deleted": "Order deleted"
+    }
   },
   "error": {
     "INVALID_DATA": "Invalid data",
     "INVALID_CREDENTIALS": "Invalid credentials",
     "ER_DUP_ENTRY": "Object already exists",
-    "ER_BAD_NULL_ERROR": "Missing data"
+    "ER_BAD_NULL_ERROR": "Missing data",
+    "OBJECT_NOT_FOUND": "Object not found, unable to perform action"
   }
 }

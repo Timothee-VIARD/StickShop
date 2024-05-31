@@ -1,4 +1,4 @@
-import { Skeleton, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProfileContext } from '../../contexts/ProfileContext';
@@ -25,8 +25,8 @@ export const OrdersVisualisation = () => {
   }, []);
 
   return (
-    <main>
-      <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
+    <main className="h-fit flex-grow flex flex-col">
+      <Typography variant="h4" className="pt-14 pb-2 text-center">
         {t('orders.title')}
       </Typography>
       {orders.length !== 0 ? (
@@ -36,7 +36,9 @@ export const OrdersVisualisation = () => {
           ))}
         </Stack>
       ) : (
-        <Skeleton variant="rectangular" width={210} height={118} />
+        <Box className="flex-grow flex justify-center items-center my-12">
+          <Typography variant="h6">{t('orders.noOrders')}</Typography>
+        </Box>
       )}
     </main>
   );

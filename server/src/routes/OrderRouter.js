@@ -184,7 +184,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//update
 /**
  * @swagger
  * /orders/updateStatus/{id}:

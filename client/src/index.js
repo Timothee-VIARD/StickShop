@@ -22,6 +22,7 @@ import OrderPage from './pages/OrderPage';
 import { ParametersPage } from './pages/ParametersPage';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import OrdersPage from './pages/OrdersPage';
+import OrdersManagementPage from './pages/OrdersManagementPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -44,6 +45,7 @@ root.render(
                   <AdminRoute exact path="/admin" component={ProductsManagementPage} />
                   <AdminRoute exact path="/admin/product/:id" component={ProductEditPage} />
                   <AdminRoute exact path="/admin/create" component={CreateProductPage} />
+                  <AdminRoute exact path="/admin/orders" component={OrdersManagementPage} />
                   <Route component={PageNotFound} />
                 </Switch>
               </Router>
