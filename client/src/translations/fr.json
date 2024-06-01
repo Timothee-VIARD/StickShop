@@ -140,7 +140,9 @@
     "orderSuccess": {
       "title": "Commande effectuée",
       "message": "Votre commande a bien été enregistrée. Merci pour votre achat !",
-      "return": "Retourner à la boutique"
+      "email": "Email de confirmation pour la commande",
+      "emailSent": "Email de confirmation envoyé",
+      "emailMessage": "Récapitulatif de votre commande :"
     }
   },
   "orders": {
@@ -176,10 +178,11 @@
     "contactForm": {
       "title": "Formulaire de contact",
       "description": "Pour toute question ou demande d'information, n'hésitez pas à nous contacter en remplissant le formulaire ci-dessous.",
-      "name": "Nom",
+      "subject": "Objet",
       "email": "Email",
       "message": "Message",
-      "send": "Envoyer"
+      "send": "Envoyer",
+      "success": "Message envoyé"
     },
     "mapTitle": "Où nous trouver",
     "mapPopup": "StickShop",

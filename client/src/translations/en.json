@@ -140,7 +140,9 @@
     "orderSuccess": {
       "title": "Order success",
       "message": "Your order has been successfully placed. Thank you for your purchase !",
-      "return": "Return to the home page"
+      "email": "Order confirmation email",
+      "emailSent": "Confirmation email sent",
+      "emailMessage": "Summary of your order:"
     }
   },
   "orders": {
@@ -176,10 +178,11 @@
     "contactForm": {
       "title": "Contact Form",
       "description": "If you have any questions or would like more information, please contact us using the form below.",
-      "name": "Name",
+      "subject": "Subject",
       "email": "Email",
       "message": "Message",
-      "send": "Send"
+      "send": "Send",
+      "success": "Message sent"
     },
     "mapTitle": "Where to find us",
     "mapPopup": "StickShop",

@@ -86,12 +86,7 @@ const Order = () => {
   const productsGrouped = groubBy(cart, 'id');
 
   const removePurchaseItem = async () => {
-    console.log('removePurchaseItem');
-    console.log('productsGrouped', Object.entries(productsGrouped));
     for (const [id, products] of Object.entries(productsGrouped)) {
-      console.log('id', id);
-      console.log('products', products);
-
       const url = `http://localhost:3001/products/updateQuantity/${id}`;
       const body = {
         quantity: products[0].quantity - products.length
