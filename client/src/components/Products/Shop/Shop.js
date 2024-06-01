@@ -9,8 +9,8 @@ const Shop = () => {
   const { t } = useTranslation();
 
   return (
-    <main>
-      <Typography variant="h4" className="pt-14 flex-grow text-center">
+    <main className="flex-grow flex flex-col">
+      <Typography variant="h4" className="pt-14 text-center">
         {t('shop.title')}
       </Typography>
       <AvailableProducts />

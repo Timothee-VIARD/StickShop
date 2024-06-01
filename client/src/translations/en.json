@@ -76,6 +76,26 @@
   },
   "shop": {
     "title": "Shop",
+    "noProducts": "No products found",
+    "filters": {
+      "titleDisplay": "Show filters",
+      "titleHide": "Hide filters",
+      "reset": "Reset filters"
+    },
+    "categories": {
+      "title": "Categories :",
+      "all": "All"
+    },
+    "price": {
+      "title": "Price :",
+      "min": "Min:",
+      "max": "Max:"
+    },
+    "sort": {
+      "empty": "No sorting",
+      "asc": "Price ascending",
+      "desc": "Price descending"
+    },
     "shopCart": {
       "title": "Cart",
       "totalPrice": "Total price",

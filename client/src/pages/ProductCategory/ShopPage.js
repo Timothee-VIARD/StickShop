@@ -6,7 +6,7 @@ import '../../style/global.css';
 
 export const ShopPage = () => {
   return (
-    <Box className="flex flex-col justify-between h-full">
+    <Box className="flex flex-col justify-between h-[100vh]">
       <Box className="pt-14">
         <Banner />
       </Box>

@@ -123,7 +123,7 @@ export const Profile = () => {
     } else {
       try {
         const response = await fetch('http://localhost:3001/profile/update', {
-          method: 'POST',
+          method: 'PUT',
           body: formData
         });
 
