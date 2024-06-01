@@ -70,7 +70,8 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
             </IconButton>
           )
         });
-        removePurchaseItem();
+        await sendConfirmationEmail();
+        // removePurchaseItem();
       }
     } catch (error) {
       const errorMessage = t(`error.${error.message}`);
@@ -78,6 +79,55 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
         variant: 'error',
         action: (key) => (
           <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
+            <CloseRoundedIcon fontSize="small" />
+          </IconButton>
+        )
+      });
+    }
+  };
+
+  const sendConfirmationEmail = async () => {
+    const dataToSend = {
+      to: getProfile().user.email,
+      subject: `${t('order.orderSuccess.email')} ${orderNumberFromUsername()}`,
+      text: `${t('order.orderSuccess.emailMessage')}
+        - ${t('order.orderValidation.orderNumber')} : ${orderNumberFromUsername()}
+        - ${t('order.orderValidation.deliveryDate')} : ${currentDatePlusFiveDay()}
+        - ${t('order.orderValidation.totalPrice')} : ${numberRound(data.totalPrice)}${t(
+        `parameters.currency.${getCurrency()}`
+      )}`
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/mail/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      } else {
+        const successMessage = t(`order.orderSuccess.emailSent`);
+        enqueueSnackbar(successMessage, {
+          variant: 'success',
+          action: (key) => (
+            <IconButton size="small" color="backgroundColor" onClick={() => closeSnackbar(key)}>
+              <CloseRoundedIcon fontSize="small" />
+            </IconButton>
+          )
+        });
+        removePurchaseItem();
+      }
+    } catch (error) {
+      const errorMessage = t(`error.${error.message}`);
+      enqueueSnackbar(errorMessage, {
+        variant: 'error',
+        action: (key) => (
+          <IconButton size="small" color="backgroundColor" onClick={() => closeSnackbar(key)}>
             <CloseRoundedIcon fontSize="small" />
           </IconButton>
         )

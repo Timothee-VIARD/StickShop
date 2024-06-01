@@ -49,6 +49,32 @@ router.post('/send', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /mail/receive:
+ *   post:
+ *     summary: Reçoit un email
+ *     tags: [Mail]
+ *     description: Endpoint permettant de recevoir un email
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               subject:
+ *                 type: string
+ *                 description: Sujet de l'email
+ *               text:
+ *                 type: string
+ *                 description: Corps de l'email
+ *     responses:
+ *       '200':
+ *         description: Email reçu avec succès
+ *       '400':
+ *         description: Erreur lors de la réception de l'email
+ */
 router.post('/receive', async (req, res) => {
   try {
     const result = await MailService.receiveMail(req.body.subject, req.body.text);

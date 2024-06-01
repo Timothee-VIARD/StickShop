@@ -13,7 +13,6 @@ export const OrdersVisualisation = () => {
     fetch(`http://localhost:3001/orders/user/${getProfile().user.id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setOrders(data.reverse());
         if (data.error && data.error !== 'OBJECT_NOT_FOUND') {
           throw new Error(data.error);
