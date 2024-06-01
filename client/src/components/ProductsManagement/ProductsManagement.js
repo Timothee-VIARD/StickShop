@@ -64,10 +64,10 @@ export const ProductsManagement = () => {
         }
         return response.json();
       })
-      .then((data) => {
+      .then(() => {
         setProducts(products.filter((product) => product.id !== id));
         enqueueSnackbar(t('admin.deleted'), {
-          variant: 'error',
+          variant: 'success',
           action: (key) => (
             <IconButton size="small" color="primary" onClick={() => closeSnackbar(key)}>
               <CloseRoundedIcon fontSize="small" />
@@ -116,6 +116,7 @@ export const ProductsManagement = () => {
               }
             }
           }}
+          autoHeight
           pageSizeOptions={[5]}
           disableSelectionOnClick
         />

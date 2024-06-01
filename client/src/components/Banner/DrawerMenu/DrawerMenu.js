@@ -8,7 +8,7 @@ import { ProfileContext } from '../../../contexts/ProfileContext';
 import HomeIcon from '@mui/icons-material/HomeOutlined';
 import ShopIcon from '@mui/icons-material/ShoppingCartOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
-import { ContactPhoneOutlined, LocalShippingOutlined } from '@mui/icons-material';
+import { ContactPhoneOutlined, LocalShippingOutlined, SendTimeExtensionOutlined } from '@mui/icons-material';
 
 export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
   const { t } = useTranslation();
@@ -32,7 +32,8 @@ export const DrawerMenu = ({ menuOpen, handleDrawerToggle }) => {
       link: '/shop/orders',
       icon: <LocalShippingOutlined />
     },
-    ...(isAdmin ? [{ title: t('admin.title'), link: '/admin', icon: <TuneOutlinedIcon /> }] : [])
+    ...(isAdmin ? [{ title: t('admin.title'), link: '/admin', icon: <TuneOutlinedIcon /> }] : []),
+    ...(isAdmin ? [{ title: t('admin.orders.title'), link: '/admin/orders', icon: <SendTimeExtensionOutlined /> }] : [])
   ];
 
   return (

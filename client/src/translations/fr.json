@@ -162,7 +162,8 @@
       "paymentValidation": "Validation du paiement",
       "delivering": "Livraison",
       "delivered": "Livré"
-    }
+    },
+    "noOrders": "Aucune commande trouvée"
   },
   "contact": {
     "title": "Contact",
@@ -271,12 +272,33 @@
       "cancel": "Annuler",
       "required": "Champ obligatoire"
     },
-    "deleted": "Produit supprimé"
+    "deleted": "Produit supprimé",
+    "orders": {
+      "title": "Gestion des commandes",
+      "orderNumber": "Numéro de commande",
+      "userId": "ID utilisateur",
+      "totalPrice": "Prix total",
+      "orderDate": "Date de commande",
+      "deliveryDate": "Date de livraison",
+      "status": "Statut",
+      "address": "Adresse de livraison",
+      "paymentMethod": "Méthode de paiement",
+      "steps": {
+        "ordered": "Commandé",
+        "paymentValidation": "Validation",
+        "delivering": "Livraison",
+        "delivered": "Livré",
+        "cancelled": "Annulé"
+      },
+      "delete": "Supprimer",
+      "deleted": "Commande supprimée"
+    }
   },
   "error": {
     "INVALID_DATA": "Données incorrectes",
     "INVALID_CREDENTIALS": "Identifiants incorrects",
     "ER_DUP_ENTRY": "Objet déjà existant",
-    "ER_BAD_NULL_ERROR": "Champ obligatoire"
+    "ER_BAD_NULL_ERROR": "Champ obligatoire",
+    "OBJECT_NOT_FOUND": "Objet non trouvé, impossible de faire l'action"
   }
 }

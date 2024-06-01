@@ -89,12 +89,14 @@ export const OrderInformation = ({ orderData }) => {
       </Typography>
       <Stepper activeStep={getStepIndex(order?.status)} alternativeLabel className="overflow-x-auto">
         {steps.map((label, index) => {
-          const labelProps = {};
           const stepProps = {};
+          if (order?.status === 'DELIVERED' && index === getStepIndex('DELIVERED')) {
+            stepProps.completed = true;
+          }
 
           return (
             <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
+              <StepLabel>{label}</StepLabel>
             </Step>
           );
         })}
