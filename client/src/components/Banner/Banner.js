@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import { DrawerMenu } from './DrawerMenu/DrawerMenu';
-import { ShoppingCartDrawer } from '../Shop/ShoppingCartDrawer/ShoppingCartDrawer';
+import { ShoppingCartDrawer } from '../Products/Shop/ShoppingCartDrawer/ShoppingCartDrawer';
 import './Banner.css';
 import '../../style/global.css';
 import { AuthMenu } from './AuthMenu/AuthMenu';
