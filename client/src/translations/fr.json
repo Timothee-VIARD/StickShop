@@ -76,6 +76,26 @@
   },
   "shop": {
     "title": "Boutique",
+    "noProducts": "Aucun produit trouvé",
+    "filters": {
+      "titleDisplay": "Afficher les filtres",
+      "titleHide": "Masquer les filtres",
+      "reset": "Réinitialiser les filtres"
+    },
+    "categories": {
+      "title": "Catégories :",
+      "all": "Tous"
+    },
+    "price": {
+      "title": "Prix :",
+      "min": "Min:",
+      "max": "Max:"
+    },
+    "sort": {
+      "empty": "Aucun tri",
+      "asc": "Prix croissant",
+      "desc": "Prix décroissant"
+    },
     "shopCart": {
       "title": "Panier",
       "totalPrice": "Prix total",

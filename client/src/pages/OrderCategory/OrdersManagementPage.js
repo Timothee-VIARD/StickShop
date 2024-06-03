@@ -5,11 +5,11 @@ import { OrdersManagement } from '../../components/Orders/OrdersManagement/Order
 
 const OrdersManagementPage = () => {
   return (
-    <Box className="flex flex-col justify-between h-full">
+    <Box className="flex flex-col justify-between h-[100vh]">
       <Box className="pt-14">
         <Banner />
       </Box>
-      <OrdersManagement className="flex-grow" />
+      <OrdersManagement />
       <Footer />
     </Box>
   );

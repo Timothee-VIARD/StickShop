@@ -57,7 +57,6 @@ const Banner = () => {
           <Button color="inherit" onClick={() => handleTranslate(i18n.language === 'fr' ? 'en' : 'fr')}>
             {t('global.language')}
           </Button>
-
           <AuthMenu />
         </Stack>
       </Stack>

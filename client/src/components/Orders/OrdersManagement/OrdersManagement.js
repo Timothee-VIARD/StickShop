@@ -262,7 +262,7 @@ export const OrdersManagement = () => {
   }, []);
 
   return (
-    <main>
+    <main className="flex-grow">
       <Typography variant="h4" className="pt-14 pb-2 flex-grow text-center">
         {t('admin.orders.title')}
       </Typography>
