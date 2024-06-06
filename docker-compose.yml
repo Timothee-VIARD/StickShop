@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  mariadb:
+    image: mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./dockerDatabase:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_DATABASE: stickShop
+    ports:
+      - "3306:3306"
+
+  client:
+    image: "theemoti/stickshop-client"
+    ports:
+      - "3000:3000"
+    command: npm run start
+
+  server:
+    image: "theemoti/stickshop-server"
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - "3001:3001"
+    command: npm run start
+
+volumes:
+  mariadb_data:

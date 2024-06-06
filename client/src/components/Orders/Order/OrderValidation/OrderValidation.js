@@ -71,7 +71,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
           )
         });
         await sendConfirmationEmail();
-        // removePurchaseItem();
+        removePurchaseItem();
       }
     } catch (error) {
       const errorMessage = t(`error.${error.message}`);

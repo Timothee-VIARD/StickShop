@@ -91,7 +91,7 @@ export const Profile = () => {
     if (isNewProfile) {
       try {
         const response = await fetch('http://localhost:3001/profile/create', {
-          method: 'PUT',
+          method: 'POST',
           body: formData
         });
 
