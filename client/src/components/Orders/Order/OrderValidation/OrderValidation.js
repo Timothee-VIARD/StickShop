@@ -49,7 +49,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
     };
 
     try {
-      const response = await fetch('http://localhost:3001/orders/create', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/orders/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ export const OrderValidation = ({ isOpen, setIsOpen, data, removePurchaseItem })
     };
 
     try {
-      const response = await fetch('http://localhost:3001/mail/send', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/mail/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

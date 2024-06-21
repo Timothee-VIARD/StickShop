@@ -87,7 +87,7 @@ const Order = () => {
 
   const removePurchaseItem = async () => {
     for (const [id, products] of Object.entries(productsGrouped)) {
-      const url = `http://localhost:3001/products/updateQuantity/${id}`;
+      const url = `${process.env.REACT_APP_API_URL}/products/updateQuantity/${id}`;
       const body = {
         quantity: products[0].quantity - products.length
       };
@@ -139,7 +139,7 @@ const Order = () => {
               <Stack key={id} spacing={2}>
                 <Stack direction="row" spacing={2} alignItems="center">
                   <img
-                    src={products[0].image}
+                    src={`${process.env.REACT_APP_API_URL}${products[0].image}`}
                     alt={products[0].name}
                     className="w-24 md:w-32 h-24 md:h-32 rounded-[10px]"
                   />

@@ -33,7 +33,7 @@ class AdminService {
   static async addProduct(body, file) {
     let imageUrl;
     if (file) {
-      imageUrl = `http://localhost:3001/images/${file.filename}`;
+      imageUrl = `/images/${file.filename}`;
     }
 
     const product = {
@@ -85,7 +85,7 @@ class AdminService {
     return new Promise((resolve, reject) => {
       let imageUrl;
       if (file) {
-        imageUrl = `http://localhost:3001/images/${file.filename}`;
+        imageUrl = `/images/${file.filename}`;
       }
 
       const product = {

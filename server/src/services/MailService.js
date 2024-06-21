@@ -1,17 +1,21 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import { logInfo } from '../errors/DisplayError.js';
+
+dotenv.config();
 
 class MailService {
   static async sendMail(email, subject, text) {
     let transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: `${process.env.EMAIL_SERVICE}`,
       auth: {
-        user: 'stickshop.noreply@gmail.com',
-        pass: 'nhaa sswj evwr fiig'
+        user: `${process.env.EMAIL_APP}`,
+        pass: `${process.env.EMAIL_PASS}`
       }
     });
 
     let mailOptions = {
-      from: 'stickshop.noreply@gmail.com',
+      from: `${process.env.EMAIL_APP}`,
       to: email,
       subject: subject,
       text: text
@@ -29,16 +33,18 @@ class MailService {
   }
 
   static async receiveMail(subject, text) {
+    logInfo('MailService try to send email');
+
     let transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: `${process.env.EMAIL_SERVICE}`,
       auth: {
-        user: 'stickshop.noreply@gmail.com',
-        pass: 'nhaa sswj evwr fiig'
+        user: `${process.env.EMAIL_APP}`,
+        pass: `${process.env.EMAIL_PASS}`
       }
     });
 
     let mailOptions = {
-      to: 'stickshop.noreply@gmail.com',
+      to: `${process.env.EMAIL_APP}`,
       subject: subject,
       text: text
     };

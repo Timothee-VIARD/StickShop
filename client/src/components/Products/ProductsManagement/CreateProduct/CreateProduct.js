@@ -49,7 +49,7 @@ export const CreateProduct = () => {
     product.inStock && data.append('inStock', product.inStock);
 
     try {
-      const response = await fetch('http://localhost:3001/admin/add', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/admin/add`, {
         method: 'POST',
         body: data
       });

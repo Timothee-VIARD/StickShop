@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 export const CurrencyProvider = ({ children }) => {
-  const [currency, setCurrency] = useState(() => localStorage.getItem('currency') || '€');
+  const [currency, setCurrency] = useState(() => localStorage.getItem('currency') || 'euro');
 
   useEffect(() => {
     localStorage.setItem('currency', currency);

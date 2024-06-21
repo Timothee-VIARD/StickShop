@@ -10,7 +10,7 @@ export const OrdersVisualisation = () => {
   const { getProfile } = useContext(ProfileContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/orders/user/${getProfile().user.id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/orders/user/${getProfile().user.id}`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data.reverse());

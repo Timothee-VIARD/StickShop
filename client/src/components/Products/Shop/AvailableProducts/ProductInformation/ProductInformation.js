@@ -27,7 +27,7 @@ const ProductInformation = ({ product, isOpen, handleOpenModal }) => {
     <Modal open={isOpen} onClose={handleOpenModal} className="flex flex-row justify-center items-center">
       <Box className="w-11/12 h-2/3 md:w-1/2 md:h-5/6 relative">
         <Card className="h-full overflow-auto rounded-2xl scrollbar-hide" onScroll={handleScroll} ref={modalRef}>
-          <CardMedia sx={{ height: 380 }} image={product.image} title={product.name} onClick={handleOpenModal} />
+          <CardMedia sx={{ height: 380 }} image={`${process.env.REACT_APP_API_URL}${product.image}`} title={product.name} onClick={handleOpenModal} />
           <CardContent className="bg-amber-100 bg-opacity-50 p-10 pb-2">
             <Typography gutterBottom variant="h3" component="div">
               {product.name}

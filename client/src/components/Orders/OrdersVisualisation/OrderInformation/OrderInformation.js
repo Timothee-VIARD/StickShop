@@ -42,7 +42,7 @@ export const OrderInformation = ({ orderData }) => {
 
   const handleCancel = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/orders/updateStatus/${order.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/orders/updateStatus/${order.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

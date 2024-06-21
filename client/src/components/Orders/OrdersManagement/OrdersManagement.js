@@ -184,7 +184,7 @@ export const OrdersManagement = () => {
     order.status = newStatus;
 
     try {
-      const response = await fetch(`http://localhost:3001/orders/updateStatus/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/orders/updateStatus/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -227,7 +227,7 @@ export const OrdersManagement = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3001/orders/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/orders/${id}`, {
       method: 'DELETE'
     })
       .then((response) => {
@@ -251,7 +251,7 @@ export const OrdersManagement = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3001/orders`)
+    fetch(`${process.env.REACT_APP_API_URL}/orders`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);

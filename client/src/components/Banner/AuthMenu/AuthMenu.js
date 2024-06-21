@@ -48,7 +48,7 @@ export const AuthMenu = () => {
 
   const ProfileUser = () => {
     return (
-      <Avatar sx={{ width: 32, height: 32 }} src={getProfile().user.id ? getProfile().user.profilePhoto : undefined}>
+      <Avatar sx={{ width: 32, height: 32 }} src={getProfile().user.id ? `${process.env.REACT_APP_API_URL}${getProfile().user.profilePhoto}` : undefined}>
         {getProfile().user.id ? getProfile().user.username.charAt(0).toUpperCase() : ''}
       </Avatar>
     );

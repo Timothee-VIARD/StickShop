@@ -18,7 +18,7 @@ export const ProductEdit = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   useEffect(() => {
-    fetch(`http://localhost:3001/products/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
@@ -59,7 +59,7 @@ export const ProductEdit = () => {
     data.append('inStock', product.inStock);
 
     try {
-      const response = await fetch('http://localhost:3001/admin/update', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/admin/update`, {
         method: 'PUT',
         body: data
       });
@@ -96,7 +96,7 @@ export const ProductEdit = () => {
               <Stack direction="column" className="w-9/12" spacing={5}>
                 <Stack direction="row" spacing={3}>
                   <Box className="w-3/4">
-                    <DropZoneComponent image={product.image} onFileReady={handleFileReady} />
+                    <DropZoneComponent image={`${process.env.REACT_APP_API_URL}${product.image}`} onFileReady={handleFileReady} />
                   </Box>
                   <Stack direction="column" spacing={2} className="w-full">
                     <Typography variant="h5">{t('admin.productEdit.edit')}</Typography>

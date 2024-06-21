@@ -86,7 +86,7 @@ const ShoppingCart = ({ closeDrawer }) => {
               {Object.entries(productsGrouped).map(([id, products]) => (
                 <Stack key={id}>
                   <Stack direction="row" spacing={1} alignItems="center">
-                    <img src={products[0].image} alt={products[0].name} className="w-20 h-20 rounded-[10px]" />
+                    <img src={`${process.env.REACT_APP_API_URL}${products[0].image}`} alt={products[0].name} className="w-20 h-20 rounded-[10px]" />
                     <Stack>
                       <Typography variant="p" display="block">
                         {`${products[0].name}`}

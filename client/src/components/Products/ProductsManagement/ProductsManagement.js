@@ -108,7 +108,7 @@ export const ProductsManagement = () => {
   ];
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3001/admin/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/admin/${id}`, {
       method: 'DELETE'
     })
       .then((response) => {
@@ -133,7 +133,7 @@ export const ProductsManagement = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:3001/admin/`)
+    fetch(`${process.env.REACT_APP_API_URL}/admin/`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

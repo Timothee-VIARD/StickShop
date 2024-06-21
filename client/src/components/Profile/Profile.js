@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Box, Button, Divider, Grid, Stack, TextField, Typography } from '@mui/material';
-import { closeSnackbar, enqueueSnackbar } from 'notistack';
+import React, {useContext, useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {Box, Button, Divider, Grid, Stack, TextField, Typography} from '@mui/material';
+import {closeSnackbar, enqueueSnackbar} from 'notistack';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { AutoWidthTextField } from '../Global/AutoWidthTextField';
-import { DropZoneComponent } from '../Global/DropZoneComponent';
-import { ProfileContext } from '../../contexts/ProfileContext';
+import {AutoWidthTextField} from '../Global/AutoWidthTextField';
+import {DropZoneComponent} from '../Global/DropZoneComponent';
+import {ProfileContext} from '../../contexts/ProfileContext';
 
 export const Profile = () => {
-  const { t } = useTranslation();
-  const { getProfile, updateProfile } = useContext(ProfileContext);
+  const {t} = useTranslation();
+  const {getProfile, updateProfile} = useContext(ProfileContext);
   const [isNewProfile, setIsNewProfile] = useState();
   const [newUserData, setNewUserData] = useState();
   const [newUser, setNewUser] = useState();
@@ -24,17 +24,17 @@ export const Profile = () => {
       setNewUser(getProfile().user);
       return;
     }
-    fetch(`http://localhost:3001/profile/${getProfile().user.id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/profile/${getProfile().user.id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
           setIsNewProfile(true);
-          setNewUserData({ userId: getProfile().user.id });
+          setNewUserData({userId: getProfile().user.id});
           setNewUser(getProfile().user);
-          updateProfile({ user: getProfile().user, userInformation: { userId: getProfile().user.id } });
+          updateProfile({user: getProfile().user, userInformation: {userId: getProfile().user.id}});
           return;
         }
-        updateProfile({ user: getProfile().user, userInformation: data });
+        updateProfile({user: getProfile().user, userInformation: data});
         setNewUserData(data);
         setNewUser(getProfile().user);
         setIsNewProfile(false);
@@ -55,7 +55,7 @@ export const Profile = () => {
   };
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const {name, value} = event.target;
 
     const isValid = value !== '';
 
@@ -90,7 +90,7 @@ export const Profile = () => {
 
     if (isNewProfile) {
       try {
-        const response = await fetch('http://localhost:3001/profile/create', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/profile/create`, {
           method: 'POST',
           body: formData
         });
@@ -100,11 +100,11 @@ export const Profile = () => {
           throw new Error(errorData.error);
         } else {
           const data = await response.json();
-          setNewUser({ ...newUser, profilePhoto: data.imageUrl });
-          setNewUserData({ ...newUserData, image: data.imageUrl });
+          setNewUser({...newUser, profilePhoto: data.imageUrl});
+          setNewUserData({...newUserData, image: data.imageUrl});
           updateProfile({
-            user: { ...newUser, profilePhoto: data.imageUrl },
-            userInformation: { ...newUserData, image: data.imageUrl }
+            user: {...newUser, profilePhoto: data.imageUrl},
+            userInformation: {...newUserData, image: data.imageUrl}
           });
           setIsEditing(false);
         }
@@ -115,14 +115,14 @@ export const Profile = () => {
           variant: 'error',
           action: (key) => (
             <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
-              <CloseRoundedIcon fontSize="small" />
+              <CloseRoundedIcon fontSize="small"/>
             </IconButton>
           )
         });
       }
     } else {
       try {
-        const response = await fetch('http://localhost:3001/profile/update', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {
           method: 'PUT',
           body: formData
         });
@@ -133,14 +133,14 @@ export const Profile = () => {
         } else {
           const data = await response.json();
           if (data.imageUrl) {
-            setNewUser({ ...newUser, profilePhoto: data.imageUrl });
-            setNewUserData({ ...newUserData, image: data.imageUrl });
+            setNewUser({...newUser, profilePhoto: data.imageUrl});
+            setNewUserData({...newUserData, image: data.imageUrl});
             updateProfile({
-              user: { ...newUser, profilePhoto: data.imageUrl },
-              userInformation: { ...newUserData, image: data.imageUrl }
+              user: {...newUser, profilePhoto: data.imageUrl},
+              userInformation: {...newUserData, image: data.imageUrl}
             });
           } else {
-            updateProfile({ user: newUser, userInformation: newUserData });
+            updateProfile({user: newUser, userInformation: newUserData});
           }
           setIsEditing(false);
         }
@@ -151,7 +151,7 @@ export const Profile = () => {
           variant: 'error',
           action: (key) => (
             <IconButton size="small" color="secondary" onClick={() => closeSnackbar(key)}>
-              <CloseRoundedIcon fontSize="small" />
+              <CloseRoundedIcon fontSize="small"/>
             </IconButton>
           )
         });
@@ -161,10 +161,10 @@ export const Profile = () => {
 
   const DisplayImg = () => {
     return newUserData?.image ? (
-      <img src={newUserData?.image} alt={t('profile.photo')} className="rounded-2xl bord sm:w-11/12 xl:w-5/6" />
+      <img src={`${process.env.REACT_APP_API_URL}${newUserData?.image}`} alt={t('profile.photo')} className="rounded-2xl bord sm:w-11/12 xl:w-5/6"/>
     ) : (
       <img
-        src="http://localhost:3001/images/userProfileEmpty.png"
+        src={`${process.env.REACT_APP_API_URL}/images/userProfileEmpty.png`}
         alt="avatar"
         className="rounded-2xl bord sm:w-11/12 xl:w-5/6"
       />
@@ -178,7 +178,7 @@ export const Profile = () => {
           {t('profile.title')}
         </Typography>
         <Box className="w-11/12 lg:w-2/3 rounded-2xl bg-black bg-opacity-5">
-          <Stack direction={{ xs: 'column', md: 'row' }}>
+          <Stack direction={{xs: 'column', md: 'row'}}>
             <Stack
               direction="column"
               spacing={4}
@@ -188,13 +188,13 @@ export const Profile = () => {
                 <Box className="sm:w-11/12 xl:w-5/6">
                   <DropZoneComponent
                     image={
-                      newUserData?.image ? newUserData?.image : 'http://localhost:3001/images/userProfileEmpty.png'
+                      newUserData?.image ? `${process.env.REACT_APP_API_URL}${newUserData?.image}` : `${process.env.REACT_APP_API_URL}/images/userProfileEmpty.png`
                     }
                     onFileReady={handleFileReady}
                   />
                 </Box>
               ) : (
-                <DisplayImg />
+                <DisplayImg/>
               )}
 
               <Stack direction="column" className="items-center">
@@ -205,7 +205,7 @@ export const Profile = () => {
                     value={newUser?.username || ''}
                     onChange={handleInputChange}
                     error={isError}
-                    inputProps={{ style: { textAlign: 'center', fontSize: '1.35rem', fontWeight: 'bold' } }}
+                    inputProps={{style: {textAlign: 'center', fontSize: '1.35rem', fontWeight: 'bold'}}}
                     fontSize="1.4rem"
                   />
                 ) : (
@@ -222,7 +222,7 @@ export const Profile = () => {
                   <Typography variant="h6" className="font-bold">
                     {t('profile.info')}
                   </Typography>
-                  <Divider className="border-[1px]" />
+                  <Divider className="border-[1px]"/>
                 </Stack>
                 <Grid container rowGap={2} columnSpacing={2}>
                   <Grid item xs={12} sm>
@@ -286,7 +286,7 @@ export const Profile = () => {
                   <Typography variant="h6" className="font-bold">
                     {t('profile.contact')}
                   </Typography>
-                  <Divider className="border-[1px]" />
+                  <Divider className="border-[1px]"/>
                 </Stack>
                 <Grid container rowGap={2} columnSpacing={2}>
                   <Grid item xs={12} sm>

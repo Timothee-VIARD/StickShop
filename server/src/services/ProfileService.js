@@ -21,7 +21,7 @@ class ProfileService {
   static async createProfile(data, file) {
     let imageUrl;
     if (file) {
-      imageUrl = `http://localhost:3001/images/${file.filename}`;
+      imageUrl = `/images/${file.filename}`;
     }
     const profile = JSON.parse(data.profile);
 
@@ -52,7 +52,7 @@ class ProfileService {
     const user = JSON.parse(data.user);
     let imageUrl;
     if (file) {
-      imageUrl = `http://localhost:3001/images/${file.filename}`;
+      imageUrl = `/images/${file.filename}`;
     }
 
     return new Promise((resolve, reject) => {

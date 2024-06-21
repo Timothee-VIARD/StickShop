@@ -32,7 +32,7 @@ const Product = ({ product }) => {
         <Box>
           <CardMedia
             sx={{ height: 140 }}
-            image={product.image}
+            image={`${process.env.REACT_APP_API_URL}${product.image}`}
             title={product.name}
             onClick={handleOpenModal}
             className="hover:cursor-pointer hover:opacity-50 transition duration-500 ease-in-out"
